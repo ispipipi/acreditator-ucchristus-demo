@@ -55,6 +55,16 @@
     }
     var go = ev.target.closest('[data-go]');
     if (go) { ev.preventDefault(); location.href = go.getAttribute('data-go'); return; }
+    /* v1.3: catch-all — ningún botón queda mudo. Si nada lo manejó, responde. */
+    var mudo = ev.target.closest('button');
+    if (mudo && !ev.defaultPrevented && !mudo.closest('a') &&
+        !mudo.hasAttribute('data-toast') && !mudo.hasAttribute('data-rol') &&
+        !mudo.hasAttribute('data-logout') && !mudo.hasAttribute('data-go') &&
+        !mudo.hasAttribute('disabled') && !mudo.hasAttribute('data-wired')) {
+      setTimeout(function () {
+        toast('Funci\u00f3n disponible en la versi\u00f3n productiva', 'warn');
+      }, 0);
+    }
     /* QA#3: links muertos de Stitch → inertes (href="#" o ancla sin destino) */
     var dead = ev.target.closest('a');
     if (dead) {
