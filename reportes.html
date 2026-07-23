@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Acreditator - Reportería Configurable</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        /* Custom scrollbar for high-density tables */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c4c6cf;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #74777f;
+        }
+        /* Glassmorphism subtle effects for premium feel */
+        .premium-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e6e8eb",
+                        "on-secondary-container": "#003f7a",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#d67900",
+                        "surface-bright": "#f7f9fc",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eceef1",
+                        "on-secondary-fixed": "#001c3b",
+                        "surface-container-low": "#f2f4f7",
+                        "tertiary-fixed": "#ffdcc1",
+                        "on-tertiary-fixed": "#2e1500",
+                        "on-surface": "#191c1e",
+                        "secondary-fixed": "#d5e3ff",
+                        "on-tertiary-fixed-variant": "#6c3a00",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#241000",
+                        "surface-variant": "#e0e3e6",
+                        "surface-dim": "#d8dadd",
+                        "secondary-fixed-dim": "#a7c8ff",
+                        "background": "#f7f9fc",
+                        "on-secondary-fixed-variant": "#004787",
+                        "on-primary-fixed": "#021b3c",
+                        "primary": "#12294A", /* Updated to Institutional Dark Navy */
+                        "outline-variant": "#c4c6cf",
+                        "outline": "#74777f",
+                        "tertiary-container": "#412100",
+                        "on-primary-fixed-variant": "#a7c8ff",
+                        "on-primary-container": "#7c91b7",
+                        "surface-tint": "#4a5f83",
+                        "secondary-container": "#76adfd",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#44474e",
+                        "surface-container-highest": "#e0e3e6",
+                        "secondary": "#1b5faa",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "on-error-container": "#93000a",
+                        "on-background": "#191c1e",
+                        "primary-fixed": "#d6e3ff",
+                        "tertiary-fixed-dim": "#ffb778",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f7f9fc",
+                        "primary-fixed-dim": "#b2c7f0",
+                        "inverse-primary": "#b2c7f0",
+                        "inverse-on-surface": "#eff1f4",
+                        "primary-container": "#0d1e38"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.4rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-page": "32px",
+                        "stack-default": "20px",
+                        "stack-compact": "10px",
+                        "gutter": "20px",
+                        "container-max": "1440px",
+                        "nav-width": "280px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "mono-sm": ["JetBrains Mono"],
+                        "headline-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "mono-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-hidden">
+<div class="flex h-screen">
+<!-- Sidebar -->
+<aside class="w-[260px] h-screen sticky top-0 left-0 bg-[#12294A] text-white flex flex-col py-8 border-r border-white/5 z-50 shrink-0"><div class="px-6 mb-10"><div class="bg-white rounded-lg px-3 py-2 mb-3 inline-block"><span class="block text-[11px] leading-tight font-semibold text-[#12294A]">Red de Salud</span><span class="block text-[13px] leading-tight font-extrabold text-[#12294A]">UC · CHRISTUS</span></div><div class="flex items-center gap-2"><span class="w-2 h-2 bg-secondary rounded-full"></span><h1 class="text-headline-sm font-bold tracking-tight">Acreditator</h1></div></div><nav class="flex-1 overflow-y-auto"><ul class="space-y-1"><li data-roles="admin,encargado,auditor"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="panel.html"><span class="material-symbols-outlined mr-3 text-[20px]">dashboard</span><span>Panel</span></a></li><li data-roles="admin,encargado,auditor"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="punto.html"><span class="material-symbols-outlined mr-3 text-[20px]">verified_user</span><span>Puntos de acreditación</span></a></li><li data-roles="admin,encargado"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="dotacion.html"><span class="material-symbols-outlined mr-3 text-[20px]">groups</span><span>Dotación</span></a></li><li data-roles="admin,encargado"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="sincronizacion.html"><span class="material-symbols-outlined mr-3 text-[20px]">sync</span><span>Sincronización</span></a></li><li data-roles="admin,encargado"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="alertas.html"><span class="material-symbols-outlined mr-3 text-[20px]">notifications</span><span>Alertas</span></a></li><li data-roles="admin,encargado"><a class="flex items-center px-6 py-3 bg-white/10 text-white font-semibold border-l-4 border-secondary transition-all duration-200" href="reportes.html"><span class="material-symbols-outlined mr-3 text-[20px]">assessment</span><span>Reportes</span></a></li><li data-roles="admin"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="unidades.html"><span class="material-symbols-outlined mr-3 text-[20px]">corporate_fare</span><span>Unidades</span></a></li><li data-roles="jefatura"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="jefatura.html"><span class="material-symbols-outlined mr-3 text-[20px]">medical_services</span><span>Mi servicio</span></a></li></ul></nav><div class="mt-auto px-4 py-4 border-t border-white/10"><a class="flex items-center px-4 py-3 text-white/60 hover:text-white transition-colors" href="index.html" data-logout="1"><span class="material-symbols-outlined mr-3 text-[20px]">logout</span><span class="text-sm">Cerrar sesión</span></a></div></aside>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="w-full h-20 sticky top-0 z-40 bg-white border-b border-outline-variant flex justify-between items-center px-margin-page">
+<div class="flex items-center gap-6">
+<div>
+<h2 class="text-headline-md font-headline-lg text-primary">Reportería Configurable</h2>
+<p class="text-label-md text-on-surface-variant -mt-1">Gestión de templates y exportación</p>
+</div>
+<div class="h-10 w-[1px] bg-outline-variant mx-2"></div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary w-72 transition-all shadow-sm" placeholder="Buscar reportes guardados..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-5">
+<button class="p-2.5 hover:bg-surface-container-low rounded-full transition-all text-on-surface-variant">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-2.5 hover:bg-surface-container-low rounded-full transition-all text-on-surface-variant relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 bg-error rounded-full ring-2 ring-white"></span>
+</button>
+<div class="flex items-center gap-4 ml-4 pl-6 border-l border-outline-variant">
+<div class="text-right">
+<p class="text-body-sm font-bold text-on-surface" data-user-name="1">Auditor Senior</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold" data-user-role="1">Gestión de Calidad</p>
+</div>
+<img class="w-11 h-11 rounded-xl border-2 border-secondary-container shadow-sm object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL72J8XrQ0QjZH3FYXv_iC7r0pQppJ6XMyUWoBDqWx5bxCtfVj461yVwnVCOzekDmy3CfV3fkU2Oiw0q3luFThIykdWYPn2Hk0dxcLUNnMBN_uUYuCoDuUDwptPoXHmwhfD5Uo14hMKroj8mL0zWtUBnxh6pN17XAR1zaWZd-rj3QZI891xdf7mFYJXS_NowqGkW8-FbVVybHtBtVrQ_oDpd8mkw9cXYBhpyA2N3hzXQwvzzXk_ATEdHY7R7Z_soepNtfCPbTF-m2k"/>
+</div>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-grow overflow-hidden flex bg-[#F0F2F5] p-margin-page gap-8">
+<!-- Configuration Sidebar -->
+<section class="w-80 flex flex-col gap-stack-default shrink-0 overflow-y-auto custom-scrollbar">
+<div class="premium-card p-6 rounded-xl border border-outline-variant">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-label-md text-primary font-bold uppercase tracking-widest">Configuración de Columnas</h2>
+<span class="material-symbols-outlined text-outline opacity-50">settings_suggest</span>
+</div>
+<div class="space-y-3" id="column-selector">
+<!-- Column Item 1 -->
+<label class="flex items-center p-3.5 rounded-lg border border-outline-variant bg-white hover:border-secondary transition-all cursor-pointer group shadow-sm active:scale-[0.98]">
+<div class="relative flex items-center">
+<input checked="" class="w-5 h-5 text-secondary rounded-md border-outline-variant focus:ring-offset-0 focus:ring-2 focus:ring-secondary mr-4 transition-all" data-column="rut" type="checkbox"/>
+</div>
+<span class="text-body-md text-on-surface font-semibold flex-grow">RUT</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">drag_indicator</span>
+</label>
+<!-- Column Item 2 -->
+<label class="flex items-center p-3.5 rounded-lg border border-outline-variant bg-white hover:border-secondary transition-all cursor-pointer group shadow-sm active:scale-[0.98]">
+<input checked="" class="w-5 h-5 text-secondary rounded-md border-outline-variant focus:ring-offset-0 focus:ring-2 focus:ring-secondary mr-4 transition-all" data-column="nombre" type="checkbox"/>
+<span class="text-body-md text-on-surface font-semibold flex-grow">Nombre</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">drag_indicator</span>
+</label>
+<!-- Column Item 3 -->
+<label class="flex items-center p-3.5 rounded-lg border border-outline-variant bg-white hover:border-secondary transition-all cursor-pointer group shadow-sm active:scale-[0.98]">
+<input checked="" class="w-5 h-5 text-secondary rounded-md border-outline-variant focus:ring-offset-0 focus:ring-2 focus:ring-secondary mr-4 transition-all" data-column="cargo" type="checkbox"/>
+<span class="text-body-md text-on-surface font-semibold flex-grow">Cargo</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">drag_indicator</span>
+</label>
+<!-- Column Item 4 -->
+<label class="flex items-center p-3.5 rounded-lg border border-outline-variant bg-white hover:border-secondary transition-all cursor-pointer group shadow-sm active:scale-[0.98]">
+<input checked="" class="w-5 h-5 text-secondary rounded-md border-outline-variant focus:ring-offset-0 focus:ring-2 focus:ring-secondary mr-4 transition-all" data-column="servicio" type="checkbox"/>
+<span class="text-body-md text-on-surface font-semibold flex-grow">Servicio</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">drag_indicator</span>
+</label>
+<!-- Column Item 5 (Selected Style) -->
+<label class="flex items-center p-3.5 rounded-lg border-2 border-secondary bg-secondary-container/5 hover:bg-secondary-container/10 transition-all cursor-pointer group shadow-sm active:scale-[0.98]">
+<input checked="" class="w-5 h-5 text-secondary rounded-md border-secondary focus:ring-offset-0 focus:ring-2 focus:ring-secondary mr-4 transition-all" data-column="vigencia" type="checkbox"/>
+<span class="text-body-md text-primary font-bold flex-grow">Vigencia</span>
+<span class="material-symbols-outlined text-secondary opacity-100 transition-opacity">drag_indicator</span>
+</label>
+<!-- Column Item 6 -->
+<label class="flex items-center p-3.5 rounded-lg border border-outline-variant bg-white hover:border-secondary transition-all cursor-pointer group shadow-sm active:scale-[0.98]">
+<input class="w-5 h-5 text-secondary rounded-md border-outline-variant focus:ring-offset-0 focus:ring-2 focus:ring-secondary mr-4 transition-all" data-column="unidad" type="checkbox"/>
+<span class="text-body-md text-on-surface font-semibold flex-grow opacity-60">Unidad Adm.</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">drag_indicator</span>
+</label>
+<!-- Column Item 7 -->
+<label class="flex items-center p-3.5 rounded-lg border border-outline-variant bg-white hover:border-secondary transition-all cursor-pointer group shadow-sm active:scale-[0.98]">
+<input class="w-5 h-5 text-secondary rounded-md border-outline-variant focus:ring-offset-0 focus:ring-2 focus:ring-secondary mr-4 transition-all" data-column="fecha_acreditacion" type="checkbox"/>
+<span class="text-body-md text-on-surface font-semibold flex-grow opacity-60">Fecha Acred.</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">drag_indicator</span>
+</label>
+</div>
+</div>
+<!-- Filter Summary -->
+<div class="premium-card p-6 rounded-xl border border-outline-variant">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-label-md text-primary font-bold uppercase tracking-widest">Filtros Aplicados</h3>
+<button class="text-[11px] text-secondary font-bold hover:underline transition-all">RESETEAR</button>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center pl-3 pr-1 py-1.5 rounded-full bg-secondary text-white text-[11px] font-bold shadow-sm">
+                            Año: 2023
+                            <button class="ml-2 w-5 h-5 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 transition-all">
+<span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+</span>
+<span class="inline-flex items-center pl-3 pr-1 py-1.5 rounded-full bg-secondary text-white text-[11px] font-bold shadow-sm">
+                            Sede: Central
+                            <button class="ml-2 w-5 h-5 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 transition-all">
+<span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+</span>
+</div>
+</div>
+</section>
+<!-- Preview Area -->
+<section class="flex-grow flex flex-col min-w-0">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="font-headline-lg text-primary">Vista Previa del Reporte</h2>
+<p class="text-body-md text-on-surface-variant">Visualización dinámica de los datos seleccionados</p>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center gap-3 px-5 py-2.5 bg-white border border-outline-variant text-primary font-bold rounded-lg hover:bg-surface-container-low transition-all shadow-sm">
+<span class="material-symbols-outlined text-[20px]">save</span>
+                            Guardar Template
+                        </button>
+<button class="flex items-center gap-3 px-7 py-2.5 bg-secondary text-white font-bold rounded-lg shadow-md hover:bg-secondary/90 active:scale-[0.97] transition-all">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+                            Exportar Excel
+                        </button>
+</div>
+</div>
+<div class="flex-grow bg-white border border-outline-variant rounded-2xl overflow-hidden shadow-xl flex flex-col">
+<div class="overflow-x-auto overflow-y-auto custom-scrollbar flex-grow">
+<table class="w-full text-left border-collapse" id="preview-table">
+<thead class="sticky top-0 bg-[#F8FAFC] z-10 border-b-2 border-outline-variant">
+<tr class="text-primary text-[12px] font-bold uppercase tracking-widest">
+<th class="px-6 py-5 column-rut">RUT</th>
+<th class="px-6 py-5 column-nombre">Nombre Completo</th>
+<th class="px-6 py-5 column-cargo">Cargo Institucional</th>
+<th class="px-6 py-5 column-servicio">Servicio / Unidad</th>
+<th class="px-6 py-5 column-vigencia">Estado Vigencia</th>
+<th class="px-6 py-5 hidden column-unidad">Unidad</th>
+<th class="px-6 py-5 hidden column-fecha_acreditacion text-center">Fecha Acred.</th>
+<th class="px-6 py-5 hidden column-estado text-center">Estatus</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant text-body-md text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="px-6 py-4.5 font-mono-sm text-on-surface-variant column-rut">12.345.678-9</td>
+<td class="px-6 py-4.5 font-bold text-primary column-nombre">Dra. Claudia Espinoza</td>
+<td class="px-6 py-4.5 column-cargo">Médico Jefe</td>
+<td class="px-6 py-4.5 column-servicio">Urgencias Adulto</td>
+<td class="px-6 py-4.5 column-vigencia">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[11px] font-bold shadow-sm ring-1 ring-tertiary/10">Próximo Venc.</span>
+</td>
+<td class="px-6 py-4.5 hidden column-unidad">Área Médica</td>
+<td class="px-6 py-4.5 hidden column-fecha_acreditacion text-center">15/05/2022</td>
+<td class="px-6 py-4.5 hidden column-estado text-center">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary inline-block animate-pulse"></div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-secondary/5 transition-colors group bg-surface-container-low/20">
+<td class="px-6 py-4.5 font-mono-sm text-on-surface-variant column-rut">15.221.443-k</td>
+<td class="px-6 py-4.5 font-bold text-primary column-nombre">Andrés Morales R.</td>
+<td class="px-6 py-4.5 column-cargo">Enfermero Clínico</td>
+<td class="px-6 py-4.5 column-servicio">Pediatría General</td>
+<td class="px-6 py-4.5 column-vigencia">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] font-bold shadow-sm ring-1 ring-secondary/10">Vigente</span>
+</td>
+<td class="px-6 py-4.5 hidden column-unidad">Enfermería</td>
+<td class="px-6 py-4.5 hidden column-fecha_acreditacion text-center">20/01/2023</td>
+<td class="px-6 py-4.5 hidden column-estado text-center">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary inline-block"></div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="px-6 py-4.5 font-mono-sm text-on-surface-variant column-rut">18.990.212-3</td>
+<td class="px-6 py-4.5 font-bold text-primary column-nombre">Beatriz Soto Valenzuela</td>
+<td class="px-6 py-4.5 column-cargo">TENS Coordinadora</td>
+<td class="px-6 py-4.5 column-servicio">Ginecología y Obst.</td>
+<td class="px-6 py-4.5 column-vigencia">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-error-container text-on-error-container text-[11px] font-bold shadow-sm ring-1 ring-error/10">Vencido</span>
+</td>
+<td class="px-6 py-4.5 hidden column-unidad">Enfermería</td>
+<td class="px-6 py-4.5 hidden column-fecha_acreditacion text-center">04/11/2021</td>
+<td class="px-6 py-4.5 hidden column-estado text-center">
+<div class="w-2.5 h-2.5 rounded-full bg-error inline-block"></div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-secondary/5 transition-colors group bg-surface-container-low/20">
+<td class="px-6 py-4.5 font-mono-sm text-on-surface-variant column-rut">14.110.556-7</td>
+<td class="px-6 py-4.5 font-bold text-primary column-nombre">Dr. Luis Paredes</td>
+<td class="px-6 py-4.5 column-cargo">Cardiólogo Jefe</td>
+<td class="px-6 py-4.5 column-servicio">Unidad Coronaria</td>
+<td class="px-6 py-4.5 column-vigencia">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] font-bold shadow-sm ring-1 ring-secondary/10">Vigente</span>
+</td>
+<td class="px-6 py-4.5 hidden column-unidad">Especialidades</td>
+<td class="px-6 py-4.5 hidden column-fecha_acreditacion text-center">12/08/2023</td>
+<td class="px-6 py-4.5 hidden column-estado text-center">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary inline-block"></div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-secondary/5 transition-colors group">
+<td class="px-6 py-4.5 font-mono-sm text-on-surface-variant column-rut">10.332.901-4</td>
+<td class="px-6 py-4.5 font-bold text-primary column-nombre">Patricia Lagos H.</td>
+<td class="px-6 py-4.5 column-cargo">Jefa Administrativa</td>
+<td class="px-6 py-4.5 column-servicio">Admisión Central</td>
+<td class="px-6 py-4.5 column-vigencia">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] font-bold shadow-sm ring-1 ring-secondary/10">Vigente</span>
+</td>
+<td class="px-6 py-4.5 hidden column-unidad">Administración</td>
+<td class="px-6 py-4.5 hidden column-fecha_acreditacion text-center">09/09/2022</td>
+<td class="px-6 py-4.5 hidden column-estado text-center">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary inline-block"></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer Stats -->
+<div class="px-8 py-4 bg-[#F8FAFC] border-t border-outline-variant flex justify-between items-center text-[12px] text-primary font-bold uppercase tracking-widest">
+<div class="flex items-center gap-6">
+<span>Total Registros: <span class="text-secondary ml-1">2.450</span></span>
+<div class="w-[1px] h-4 bg-outline-variant"></div>
+<span>Columnas Activas: <span class="text-secondary ml-1" id="col-count">5</span></span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-1 hover:text-secondary transition-colors"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+<span>Página 1 de 123</span>
+<button class="p-1 hover:text-secondary transition-colors"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+<script>
+    // Column Visibility Logic
+    const checkboxes = document.querySelectorAll('#column-selector input[type="checkbox"]');
+    const colCountDisplay = document.getElementById('col-count');
+
+    checkboxes.forEach(cb => {
+        cb.addEventListener('change', () => {
+            const columnKey = cb.getAttribute('data-column');
+            const targetElements = document.querySelectorAll(`.column-${columnKey}`);
+            
+            if (cb.checked) {
+                targetElements.forEach(el => el.classList.remove('hidden'));
+                cb.parentElement.classList.add('border-secondary', 'bg-secondary-container/5');
+                cb.parentElement.querySelector('span.text-on-surface').classList.add('text-primary', 'font-bold');
+                cb.parentElement.querySelector('span.text-on-surface').classList.remove('opacity-60');
+            } else {
+                targetElements.forEach(el => el.classList.add('hidden'));
+                cb.parentElement.classList.remove('border-secondary', 'bg-secondary-container/5');
+                cb.parentElement.querySelector('span.text-on-surface')?.classList.remove('text-primary', 'font-bold');
+                cb.parentElement.querySelector('span.text-on-surface')?.classList.add('opacity-60');
+            }
+
+            // Update column count display
+            const activeCount = document.querySelectorAll('#column-selector input:checked').length;
+            colCountDisplay.textContent = activeCount;
+
+            // Micro-interaction
+            const table = document.getElementById('preview-table');
+            table.style.opacity = '0.7';
+            table.style.transform = 'translateY(2px)';
+            setTimeout(() => {
+                table.style.opacity = '1';
+                table.style.transform = 'translateY(0)';
+            }, 150);
+        });
+    });
+
+    // Search focus effect
+    const searchInput = document.querySelector('input[type="text"]');
+    searchInput.addEventListener('focus', () => {
+        searchInput.classList.add('w-96');
+        searchInput.parentElement.classList.add('scale-[1.02]');
+    });
+    searchInput.addEventListener('blur', () => {
+        searchInput.classList.remove('w-96');
+        searchInput.parentElement.classList.remove('scale-[1.02]');
+    });
+</script>
+<script src="js/app.js"></script><script>
+
+function $btn(txt){var els=document.querySelectorAll('button,a');for(var i=0;i<els.length;i++){if(els[i].textContent.replace(/\s+/g,' ').trim().indexOf(txt)>=0)return els[i];}return null;}
+function $btnAll(txt){var out=[],els=document.querySelectorAll('button,a');for(var i=0;i<els.length;i++){if(els[i].textContent.replace(/\s+/g,' ').trim().indexOf(txt)>=0)out.push(els[i]);}return out;}
+function hideCard(txt){var els=document.querySelectorAll('h3,h4,h5');for(var i=0;i<els.length;i++){if(els[i].textContent.indexOf(txt)>=0){var c=els[i].closest('div.bg-white,div.relative,div[class*="rounded"]');if(c){c.style.display='none';}return;}}}
+function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.setAttribute('data-accion','1');if(el.tagName==='A'){el.setAttribute('href','#');}}
+
+(function(){
+  var tabla=document.querySelector('table');
+  var mapa={'RUT':0,'Nombre':1,'Cargo':2,'Servicio':3,'Vigencia':4};
+  document.querySelectorAll('input[type="checkbox"]').forEach(function(chk){
+    var cont=chk.closest('div,label');
+    var label=cont?cont.textContent.trim():'';
+    var col=null;
+    Object.keys(mapa).forEach(function(k){if(label.indexOf(k)===0){col=mapa[k];}});
+    chk.addEventListener('change',function(){
+      if(col===null){
+        if(window.AcreditatorDemo){AcreditatorDemo.toast('Columna "'+label+'" se agregar\u00e1 al template en versi\u00f3n productiva');}
+        return;
+      }
+      if(!tabla){return;}
+      tabla.querySelectorAll('tr').forEach(function(tr){
+        var celda=tr.children[col];
+        if(celda){celda.style.display=chk.checked?'':'none';}
+      });
+      var visibles=0;
+      document.querySelectorAll('input[type="checkbox"]').forEach(function(c2){if(c2.checked){visibles++;}});
+      var cnt=document.querySelectorAll('div,span,p');
+      for(var i=0;i<cnt.length;i++){
+        if(cnt[i].children.length===0&&/^\d$/.test(cnt[i].textContent.trim())&&cnt[i].textContent.trim()!==''+visibles){
+          /* actualizar contador COLUMNAS ACTIVAS si coincide contexto */
+          var padre=cnt[i].parentNode?cnt[i].parentNode.textContent:'';
+          if(padre.indexOf('COLUMNAS')>=0){cnt[i].textContent=visibles;}
+        }
+      }
+    });
+  });
+  toastify($btn('Exportar Excel'),'Reporte exportado con las columnas seleccionadas (simulado)');
+  toastify($btn('Guardar Template'),'Template de reporte guardado (simulado)');
+})();
+</script></body></html>

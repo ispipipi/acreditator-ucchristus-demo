@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .premium-border {
+            border: 1px solid #e0e3e6;
+        }
+        .premium-card {
+            background: #ffffff;
+            border: 1px solid #e0e3e6;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+        @media print {
+            .no-print { display: none; }
+            body { background: white; }
+            .premium-card { border: 1px solid #eee; box-shadow: none; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#241000",
+                        "tertiary-fixed-dim": "#ffb778",
+                        "outline-variant": "#c4c6cf",
+                        "on-background": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#7c91b7",
+                        "surface-tint": "#4a5f83",
+                        "primary-fixed": "#d6e3ff",
+                        "surface-bright": "#f7f9fc",
+                        "surface-variant": "#e0e3e6",
+                        "background": "#f7f9fc",
+                        "on-tertiary-fixed": "#2e1500",
+                        "surface-container": "#eceef1",
+                        "surface": "#f7f9fc",
+                        "secondary-fixed-dim": "#a7c8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#d5e3ff",
+                        "primary-fixed-dim": "#b2c7f0",
+                        "on-secondary-fixed": "#001c3b",
+                        "surface-dim": "#d8dadd",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "primary-container": "#12294a",
+                        "on-tertiary-container": "#d67900",
+                        "secondary-container": "#76adfd",
+                        "on-surface-variant": "#44474e",
+                        "on-primary-fixed": "#021b3c",
+                        "outline": "#74777f",
+                        "on-tertiary-fixed-variant": "#6c3a00",
+                        "on-primary-fixed-variant": "#32476a",
+                        "tertiary-fixed": "#ffdcc1",
+                        "secondary": "#1b5faa",
+                        "on-surface": "#191c1e",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#b2c7f0",
+                        "tertiary-container": "#412100",
+                        "inverse-surface": "#2d3133",
+                        "primary": "#001431",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f2f4f7",
+                        "inverse-on-surface": "#eff1f4",
+                        "on-secondary-container": "#003f7a",
+                        "surface-container-highest": "#e0e3e6",
+                        "surface-container-high": "#e6e8eb",
+                        "on-secondary-fixed-variant": "#004787",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-page": "24px",
+                        "gutter": "16px",
+                        "stack-compact": "8px",
+                        "container-max": "1440px",
+                        "stack-default": "16px",
+                        "nav-width": "260px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "mono-sm": ["JetBrains Mono"],
+                        "headline-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "mono-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-bright text-on-background font-body-md text-body-md overflow-x-hidden min-h-screen">
+<!-- Premium Navigation Bar -->
+<header class="w-full h-20 bg-white flex items-center justify-between px-margin-page sticky top-0 z-50 no-print border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-5">
+<div class="flex items-center justify-center w-12 h-12 bg-primary rounded">
+<span class="material-symbols-outlined text-white text-[28px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary leading-tight">Acreditator UC CHRISTUS</h1>
+<p class="font-label-md text-label-md text-on-surface-variant tracking-wider uppercase">Modo Presentación de Evidencia</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-5 py-2.5 border border-outline-variant text-primary hover:bg-surface-container transition-colors rounded-lg font-label-md text-label-md" onclick="window.print()">
+<span class="material-symbols-outlined text-[18px]">print</span>
+            EXPORTAR PDF
+        </button>
+<button class="flex items-center gap-2 px-6 py-2.5 bg-secondary text-on-secondary rounded-lg font-label-md text-label-md shadow-sm hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">close_fullscreen</span>
+            SALIR DE MODO
+        </button>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto p-margin-page">
+<!-- Service Identity Section -->
+<section class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-outline-variant pb-8">
+<div>
+<span class="font-label-md text-label-md text-secondary tracking-widest uppercase mb-3 block font-semibold">Unidad de Acreditación Permanente</span>
+<h2 class="font-headline-lg text-[32px] text-primary mb-3 leading-none">Servicio de Urgencia Adultos - Hospital Clínico</h2>
+<div class="flex items-center gap-4">
+<span class="px-4 py-1.5 bg-primary text-white rounded font-label-md text-label-md font-medium">Vigencia 2024-2027</span>
+<span class="flex items-center gap-2 text-green-700 font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    ESTADO: CUMPLIMIENTO TOTAL
+                </span>
+</div>
+</div>
+<div class="text-right flex flex-col items-end">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-tighter mb-1">Última Sincronización</p>
+<div class="flex items-center gap-2 font-mono-sm text-mono-sm text-on-surface bg-surface-container-low px-3 py-1.5 rounded border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">history</span>
+                15 OCT 2023 - 09:42 AM
+            </div>
+</div>
+</section>
+<!-- Evidence Overview Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-12">
+<!-- Main Score -->
+<div class="md:col-span-4 premium-card p-8 flex flex-col justify-between border-l-[6px] border-l-secondary">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant tracking-widest mb-10">PUNTAJE GLOBAL DE CUMPLIMIENTO</h3>
+<div class="flex items-baseline gap-3">
+<span class="text-[80px] font-bold text-primary leading-none tracking-tighter">98.2</span>
+<span class="text-headline-md text-on-surface-variant font-medium">/ 100</span>
+</div>
+</div>
+<div class="mt-10">
+<div class="w-full bg-surface-container-high h-2.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 98.2%"></div>
+</div>
+<div class="flex justify-between items-center mt-3">
+<span class="font-label-md text-label-md text-on-surface-variant">MIN: 85.0%</span>
+<span class="font-label-md text-label-md text-secondary font-bold">EXCELENCIA</span>
+</div>
+</div>
+</div>
+<!-- Metric Details -->
+<div class="md:col-span-8 premium-card p-0 overflow-hidden">
+<div class="px-8 py-5 border-b border-outline-variant bg-surface-container-lowest flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-primary">Indicadores de Gestión Estratégica</h3>
+<span class="material-symbols-outlined text-secondary opacity-50">analytics</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2">
+<div class="p-8 border-b border-r border-outline-variant hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-center mb-3">
+<p class="font-label-md text-label-md text-on-surface-variant font-semibold tracking-wide">GESTIÓN DE CALIDAD</p>
+<span class="text-green-700 text-headline-sm">100%</span>
+</div>
+<p class="text-[28px] font-bold text-primary">12 / 12 <span class="text-body-sm font-normal text-on-surface-variant">pts</span></p>
+</div>
+<div class="p-8 border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-center mb-3">
+<p class="font-label-md text-label-md text-on-surface-variant font-semibold tracking-wide">SEGURIDAD DEL PACIENTE</p>
+<span class="text-green-700 text-headline-sm">96%</span>
+</div>
+<p class="text-[28px] font-bold text-primary">24 / 25 <span class="text-body-sm font-normal text-on-surface-variant">pts</span></p>
+</div>
+<div class="p-8 border-r border-outline-variant hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-center mb-3">
+<p class="font-label-md text-label-md text-on-surface-variant font-semibold tracking-wide">RECURSOS HUMANOS</p>
+<span class="text-green-700 text-headline-sm">100%</span>
+</div>
+<p class="text-[28px] font-bold text-primary">15 / 15 <span class="text-body-sm font-normal text-on-surface-variant">pts</span></p>
+</div>
+<div class="p-8 hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-center mb-3">
+<p class="font-label-md text-label-md text-on-surface-variant font-semibold tracking-wide">EQUIPAMIENTO CLÍNICO</p>
+<span class="text-green-700 text-headline-sm">94%</span>
+</div>
+<p class="text-[28px] font-bold text-primary">18 / 19 <span class="text-body-sm font-normal text-on-surface-variant">pts</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Staff Verification Table -->
+<section class="premium-card overflow-hidden">
+<div class="p-8 border-b border-outline-variant flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Registro de Personal Clínico Certificado</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Evidencia técnica de dotación autorizada y vigente según normativas SIS.</p>
+</div>
+<div class="relative w-full sm:w-80">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-11 pr-4 py-3 border border-outline-variant rounded-lg bg-surface-container-lowest focus:ring-2 focus:ring-secondary focus:border-secondary focus:outline-none font-body-md text-body-md transition-all" placeholder="Buscar profesional o RUT..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-8 py-5 font-label-md text-label-md text-on-surface-variant font-bold tracking-wider uppercase">Profesional</th>
+<th class="px-8 py-5 font-label-md text-label-md text-on-surface-variant font-bold tracking-wider uppercase">Identificación</th>
+<th class="px-8 py-5 font-label-md text-label-md text-on-surface-variant font-bold tracking-wider uppercase">Especialidad / Cargo</th>
+<th class="px-8 py-5 font-label-md text-label-md text-on-surface-variant font-bold tracking-wider uppercase text-center">Estado SIS</th>
+<th class="px-8 py-5 font-label-md text-label-md text-on-surface-variant font-bold tracking-wider uppercase text-right">Validación</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-surface-container-high ring-1 ring-outline-variant shrink-0">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi_-Dt3WhOBe3w9t9r0gY0BauqdPj5BZDTjVsSmhnVgMBzXqwRQRXYnQEE-8dgFRVNIvfB_taT1c0sbHj-kH6Qjsov652JCLZJwO-YzhRt3i_w8LVK2DGEjGkeU4guOmooHjl_bqoBDT19TGOAah_eIXzty4sJ1duvOe7E9fzO7XZEdsG8g1zLWbb4NCcWHO7AKX8bOfwz5bWCdliKHAAYvwAyhtE7fSSZTH83g1yo_BD9GC2bvukQ2F7_HcAUf9UfzMtshgqLb0rV"/>
+</div>
+<div>
+<p class="font-bold text-primary text-body-lg">Dra. Claudia Espinoza G.</p>
+<p class="text-xs font-medium text-on-surface-variant">Médico Jefe Urgencia</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5 font-mono-sm text-mono-sm text-on-surface">12.456.789-K</td>
+<td class="px-8 py-5 text-on-surface-variant font-medium">Medicina de Urgencia</td>
+<td class="px-8 py-5 text-center">
+<span class="inline-flex items-center gap-2 px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-bold border border-green-200">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                VIGENTE
+                            </span>
+</td>
+<td class="px-8 py-5 text-right font-mono-sm text-mono-sm text-on-surface-variant">12/09/2023</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-surface-container-high ring-1 ring-outline-variant shrink-0">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoaEk1CIhnB7KXeepazvlOSltXDxwjS2YpsVZXTcVJmzprDb8WliTofKXKEZJdSygxM1NQ9PzXTs7eR4qWMwGJjGFU4cMbJGb03Gwb0_HtLMNVBKe9APvG9fsd4E1ahYIp-0ZWbzH3K5n85O4h8XCOUaTgZQTtHCjkKjdUw9DwwchUuq0sGP00oOXtfcDHEYj1AP-CnIkXiRndMp7YKawRj2VzzXz4MzQxAdCm8riPMWQ7pMPE3H8deO3RTVuhrKBgKL77H3cHG10E"/>
+</div>
+<div>
+<p class="font-bold text-primary text-body-lg">Enf. Ricardo Alarcón S.</p>
+<p class="text-xs font-medium text-on-surface-variant">Enfermero Supervisor</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5 font-mono-sm text-mono-sm text-on-surface">15.890.123-4</td>
+<td class="px-8 py-5 text-on-surface-variant font-medium">Gestión de Cuidado</td>
+<td class="px-8 py-5 text-center">
+<span class="inline-flex items-center gap-2 px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-bold border border-green-200">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                VIGENTE
+                            </span>
+</td>
+<td class="px-8 py-5 text-right font-mono-sm text-mono-sm text-on-surface-variant">08/10/2023</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-surface-container-high ring-1 ring-outline-variant shrink-0">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzZhrFgjFsdh1tFxLvxV2GNpHUIcw-SkV1RMXCTwTZwod3cTs9Wj2Po9JMzC4ZJKshLS0MdY9kJ3exC_qudK2Qn31_YBvp7URUZOvAIpo3p38WSdU34vpSnUg-ODlYUou66a2PxB1NbV8Etf0lcOwPZ-kLGAdT-Oy4MJk_tz-qDmqB3HpJYHAVzX2T0Ebu5_TVePLiy96XcYrFaW3J5QuKLvk3v6uta--cOdgKdwf6UsUH9rUHvj0eKKDjqrAqJolggoOgAvZDAoOc"/>
+</div>
+<div>
+<p class="font-bold text-primary text-body-lg">Klga. Marcela Soto V.</p>
+<p class="text-xs font-medium text-on-surface-variant">Kinesióloga Respiratoria</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5 font-mono-sm text-mono-sm text-on-surface">17.234.567-8</td>
+<td class="px-8 py-5 text-on-surface-variant font-medium">Kinesiología Crítica</td>
+<td class="px-8 py-5 text-center">
+<span class="inline-flex items-center gap-2 px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-bold border border-green-200">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                VIGENTE
+                            </span>
+</td>
+<td class="px-8 py-5 text-right font-mono-sm text-mono-sm text-on-surface-variant">25/09/2023</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-surface-container-high ring-1 ring-outline-variant shrink-0">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD22UKY8NPFRrDZWf5Xu8hCFs6jOLxP2S7iSvdtdacN4Q3Nb1wJrFc1idgZ7pAcjpggOTaLqgI7UewIhLEbtEQpEROedwZnwdeqAgt-x3S5ulqPTFTNISY-RPxJEy_tOQZ5dxGKlQfyuoWc8yxpZ4gLACFYsQatttT896n7pPsgec7YNPGx47XlFaK-I3rd_-rvZ0JfeRFyGc11nhNk9mhAgbw-TkST_dJmayI2tp46I9m7sIUwaLKNg-c64mw8gRWjaKW4FoA3qATT"/>
+</div>
+<div>
+<p class="font-bold text-primary text-body-lg">Dr. Jorge Valdivia M.</p>
+<p class="text-xs font-medium text-on-surface-variant">Médico Residente</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5 font-mono-sm text-mono-sm text-on-surface">10.334.221-5</td>
+<td class="px-8 py-5 text-on-surface-variant font-medium">Medicina Interna</td>
+<td class="px-8 py-5 text-center">
+<span class="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-bold border border-amber-200">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">update</span>
+                                EN RENOVACIÓN
+                            </span>
+</td>
+<td class="px-8 py-5 text-right font-mono-sm text-mono-sm text-on-surface-variant">01/10/2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-8 py-6 bg-surface-container-low border-t border-outline-variant flex justify-between items-center no-print">
+<p class="text-body-sm text-on-surface-variant font-medium">Mostrando 4 de 42 profesionales certificados.</p>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded bg-white hover:bg-surface-container-lowest transition-colors text-primary shadow-sm">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center border-none rounded bg-primary text-white font-bold text-sm shadow-sm">1</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded bg-white hover:bg-surface-container-lowest transition-colors text-primary font-bold text-sm shadow-sm">2</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded bg-white hover:bg-surface-container-lowest transition-colors text-primary font-bold text-sm shadow-sm">3</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded bg-white hover:bg-surface-container-lowest transition-colors text-primary shadow-sm">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Institutional Footer Branding -->
+<footer class="mt-20 flex flex-col items-center justify-center text-center pb-20">
+<div class="flex items-center gap-12 mb-8 opacity-30 hover:opacity-100 transition-opacity duration-500">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[40px] text-primary mb-3">lock_person</span>
+<p class="font-label-md text-label-md font-bold text-primary tracking-widest uppercase">Seguridad UC</p>
+</div>
+<div class="h-10 w-px bg-outline-variant"></div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[40px] text-primary mb-3">verified</span>
+<p class="font-label-md text-label-md font-bold text-primary tracking-widest uppercase">Certificado SIS</p>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl leading-relaxed">
+            Este reporte consolidado es generado por la plataforma <strong>Acreditator UC CHRISTUS</strong>.<br/>
+            La información contenida constituye evidencia oficial para procesos de acreditación nacional e institucional.
+        </p>
+</footer>
+</main>
+<!-- High Contrast Overlay -->
+<div class="fixed inset-0 pointer-events-none border-[8px] border-primary/5 no-print"></div>
+<script>
+    // Visual feedback for table interaction
+    const rows = document.querySelectorAll('tbody tr');
+    rows.forEach(row => {
+        row.addEventListener('mouseenter', () => {
+            row.style.backgroundColor = '#f7f9fc';
+        });
+        row.addEventListener('mouseleave', () => {
+            row.style.backgroundColor = 'transparent';
+        });
+    });
+
+    // Handle Escape key for exiting presentation mode
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            console.log('Solicitud de salida de modo presentación');
+            // Logic to return to standard dashboard
+        }
+    });
+</script>
+<script src="js/app.js"></script><script>
+
+function $btn(txt){var els=document.querySelectorAll('button,a');for(var i=0;i<els.length;i++){if(els[i].textContent.replace(/\s+/g,' ').trim().indexOf(txt)>=0)return els[i];}return null;}
+function $btnAll(txt){var out=[],els=document.querySelectorAll('button,a');for(var i=0;i<els.length;i++){if(els[i].textContent.replace(/\s+/g,' ').trim().indexOf(txt)>=0)out.push(els[i]);}return out;}
+function hideCard(txt){var els=document.querySelectorAll('h3,h4,h5');for(var i=0;i<els.length;i++){if(els[i].textContent.indexOf(txt)>=0){var c=els[i].closest('div.bg-white,div.relative,div[class*="rounded"]');if(c){c.style.display='none';}return;}}}
+function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.setAttribute('data-accion','1');if(el.tagName==='A'){el.setAttribute('href','#');}}
+
+(function(){
+  var salir=$btn('SALIR DE MODO')||$btn('Salir de Modo');
+  if(salir){salir.addEventListener('click',function(e){e.preventDefault();location.href='jefatura.html';});}
+  toastify($btn('EXPORTAR PDF')||$btn('Exportar PDF'),'PDF de evidencia generado (simulado en demo)');
+})();
+</script></body></html>

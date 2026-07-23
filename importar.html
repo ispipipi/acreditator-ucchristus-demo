@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Acreditator - Importación de Nómina</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .drag-active {
+            border-color: #1b5faa;
+            background-color: #f2f4f7;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f7f9fc;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #74777f;
+        }
+        .step-completed {
+            background-color: #1b5faa;
+            color: white;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e6e8eb",
+                    "on-secondary-container": "#003f7a",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#d67900",
+                    "surface-bright": "#f7f9fc",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#eceef1",
+                    "on-secondary-fixed": "#001c3b",
+                    "surface-container-low": "#f2f4f7",
+                    "tertiary-fixed": "#ffdcc1",
+                    "on-tertiary-fixed": "#2e1500",
+                    "on-surface": "#191c1e",
+                    "secondary-fixed": "#d5e3ff",
+                    "on-tertiary-fixed-variant": "#6c3a00",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#241000",
+                    "surface-variant": "#e0e3e6",
+                    "surface-dim": "#d8dadd",
+                    "secondary-fixed-dim": "#a7c8ff",
+                    "background": "#f7f9fc",
+                    "on-secondary-fixed-variant": "#004787",
+                    "on-primary-fixed": "#021b3c",
+                    "primary": "#12294A",
+                    "outline-variant": "#c4c6cf",
+                    "outline": "#74777f",
+                    "tertiary-container": "#412100",
+                    "on-primary-fixed-variant": "#32476a",
+                    "on-primary-container": "#7c91b7",
+                    "surface-tint": "#4a5f83",
+                    "secondary-container": "#76adfd",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#44474e",
+                    "surface-container-highest": "#e0e3e6",
+                    "secondary": "#1b5faa",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "on-error-container": "#93000a",
+                    "on-background": "#191c1e",
+                    "primary-fixed": "#d6e3ff",
+                    "tertiary-fixed-dim": "#ffb778",
+                    "on-secondary": "#ffffff",
+                    "surface": "#f7f9fc",
+                    "primary-fixed-dim": "#b2c7f0",
+                    "inverse-primary": "#b2c7f0",
+                    "inverse-on-surface": "#eff1f4",
+                    "primary-container": "#12294A"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-page": "32px",
+                    "stack-default": "24px",
+                    "stack-compact": "12px",
+                    "gutter": "24px",
+                    "container-max": "1440px",
+                    "nav-width": "280px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "mono-sm": ["JetBrains Mono"],
+                    "headline-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "mono-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["22px", {"lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-[#F8FAFC] text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<aside class="w-[260px] h-screen sticky top-0 left-0 bg-[#12294A] text-white flex flex-col py-8 border-r border-white/5 z-50 shrink-0"><div class="px-6 mb-10"><div class="bg-white rounded-lg px-3 py-2 mb-3 inline-block"><span class="block text-[11px] leading-tight font-semibold text-[#12294A]">Red de Salud</span><span class="block text-[13px] leading-tight font-extrabold text-[#12294A]">UC · CHRISTUS</span></div><div class="flex items-center gap-2"><span class="w-2 h-2 bg-secondary rounded-full"></span><h1 class="text-headline-sm font-bold tracking-tight">Acreditator</h1></div></div><nav class="flex-1 overflow-y-auto"><ul class="space-y-1"><li data-roles="admin,encargado,auditor"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="panel.html"><span class="material-symbols-outlined mr-3 text-[20px]">dashboard</span><span>Panel</span></a></li><li data-roles="admin,encargado,auditor"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="punto.html"><span class="material-symbols-outlined mr-3 text-[20px]">verified_user</span><span>Puntos de acreditación</span></a></li><li data-roles="admin,encargado"><a class="flex items-center px-6 py-3 bg-white/10 text-white font-semibold border-l-4 border-secondary transition-all duration-200" href="dotacion.html"><span class="material-symbols-outlined mr-3 text-[20px]">groups</span><span>Dotación</span></a></li><li data-roles="admin,encargado"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="sincronizacion.html"><span class="material-symbols-outlined mr-3 text-[20px]">sync</span><span>Sincronización</span></a></li><li data-roles="admin,encargado"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="alertas.html"><span class="material-symbols-outlined mr-3 text-[20px]">notifications</span><span>Alertas</span></a></li><li data-roles="admin,encargado"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="reportes.html"><span class="material-symbols-outlined mr-3 text-[20px]">assessment</span><span>Reportes</span></a></li><li data-roles="admin"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="unidades.html"><span class="material-symbols-outlined mr-3 text-[20px]">corporate_fare</span><span>Unidades</span></a></li><li data-roles="jefatura"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="jefatura.html"><span class="material-symbols-outlined mr-3 text-[20px]">medical_services</span><span>Mi servicio</span></a></li></ul></nav><div class="mt-auto px-4 py-4 border-t border-white/10"><a class="flex items-center px-4 py-3 text-white/60 hover:text-white transition-colors" href="index.html" data-logout="1"><span class="material-symbols-outlined mr-3 text-[20px]">logout</span><span class="text-sm">Cerrar sesión</span></a></div></aside>
+<!-- Main Workspace -->
+<div class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="w-full h-20 sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200 flex justify-between items-center px-8">
+<div class="flex items-center gap-6">
+<div class="flex items-center bg-slate-100 px-4 py-2 rounded-full border border-slate-200 group focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-400 text-lg mr-2 group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-80 p-0 placeholder-slate-400" placeholder="Buscar funcionario, unidad o RUT..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center hover:bg-slate-100 rounded-full transition-all text-slate-600 relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 bg-error rounded-full ring-2 ring-white"></span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-slate-100 rounded-full transition-all text-slate-600">
+<span class="material-symbols-outlined" data-icon="help_center">help_center</span>
+</button>
+</div>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="font-bold text-body-md text-primary leading-none" data-user-name="1">Admin Auditor</p>
+<p class="text-[11px] font-bold text-slate-400 uppercase tracking-tighter mt-1" data-user-role="1">Sede Central UC</p>
+</div>
+<div class="relative">
+<img class="w-11 h-11 rounded-xl object-cover ring-2 ring-slate-100" data-alt="Professional profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBdwbPufmak3Msdgvs6IjSIJ4d3LfR6fxEODDRSisglvasQw-MFXE8YyIvM-nYdkfvX8193k0J1_GxIpA_ZYXILFoBbXlBQTUKV8umEl9BgZkFyuLncm96iwkYww1jKeE3TTlzmBc0EKvp8wghkZ25G5hE4DHwdWZow6eLRM6E74GPJ0GtgcdbGf0voLcb9QrwfCZ0pQaiag4o_tLNecoSDNfgY206WzjoxJf0a-EpH2nkoDfa2GTpQFpE7rRMr9OPiBzuwoDbEznX"/>
+<div class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<main class="flex-1 p-10 max-w-[1440px] mx-auto w-full">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-slate-400 text-body-sm mb-8">
+<span class="hover:text-primary cursor-pointer transition-colors">Dotación</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-bold">Importación de Nómina</span>
+</nav>
+<div class="mb-10 flex justify-between items-end">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-primary mb-2">Importar Nómina de Dotación</h2>
+<p class="text-body-lg text-slate-500 max-w-2xl">Gestione el alta masiva de personal mediante carga de archivos estructurados. El sistema realizará una validación automática de campos críticos.</p>
+</div>
+</div>
+<!-- Premium Progress Bar -->
+<div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm mb-10 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-secondary"></div>
+<div class="relative flex justify-between items-center max-w-5xl mx-auto px-10">
+<!-- Connector Lines -->
+<div class="absolute left-1/2 top-5 w-[80%] h-[3px] bg-slate-100 -translate-x-1/2 z-0">
+<div class="h-full bg-secondary transition-all duration-700" style="width: 33%"></div>
+</div>
+<!-- Step 1 -->
+<div class="relative z-10 flex flex-col items-center gap-4 group">
+<div class="w-12 h-12 rounded-2xl bg-secondary text-white flex items-center justify-center font-bold shadow-lg shadow-secondary/20 ring-4 ring-secondary/10 transform scale-110">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+</div>
+<div class="text-center">
+<span class="block text-label-md text-secondary font-bold uppercase tracking-wider">Subir Archivo</span>
+<span class="text-[10px] text-slate-400 font-medium">Paso actual</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10 flex flex-col items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-white text-slate-300 border-2 border-slate-100 flex items-center justify-center font-bold">
+<span class="material-symbols-outlined" data-icon="rule">rule</span>
+</div>
+<div class="text-center opacity-50">
+<span class="block text-label-md text-slate-600 font-bold uppercase tracking-wider">Validación</span>
+<span class="text-[10px] text-slate-400 font-medium">Pendiente</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10 flex flex-col items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-white text-slate-300 border-2 border-slate-100 flex items-center justify-center font-bold">
+<span class="material-symbols-outlined" data-icon="task_alt">task_alt</span>
+</div>
+<div class="text-center opacity-50">
+<span class="block text-label-md text-slate-600 font-bold uppercase tracking-wider">Confirmación</span>
+<span class="text-[10px] text-slate-400 font-medium">Pendiente</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Layout Content -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Main Upload Zone -->
+<section class="col-span-12 lg:col-span-8 bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm flex flex-col transition-all hover:shadow-md">
+<div class="px-8 py-6 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-secondary/10 rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<h3 class="font-bold text-lg text-primary">Carga de Nómina Institucional</h3>
+</div>
+<span class="text-xs font-bold text-slate-400 bg-white border border-slate-200 px-3 py-1 rounded-full">v2.0 Stable</span>
+</div>
+<div class="p-10 flex-1">
+<!-- Drag and Drop Area -->
+<div class="border-2 border-dashed border-slate-200 rounded-3xl p-12 flex flex-col items-center justify-center text-center transition-all duration-300 bg-[#FBFDFF] group hover:border-secondary hover:bg-slate-50" id="drop-zone">
+<div class="w-24 h-24 bg-white rounded-3xl shadow-sm border border-slate-100 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:shadow-xl group-hover:rotate-3 transition-all duration-500">
+<span class="material-symbols-outlined text-secondary text-5xl" data-icon="file_upload">file_upload</span>
+</div>
+<h4 class="text-headline-md font-bold text-primary mb-3">Suelte su archivo aquí</h4>
+<p class="text-slate-500 mb-10 max-w-sm leading-relaxed">Formato sugerido Excel (.xlsx) con los campos de identificación reglamentarios.</p>
+<div class="flex gap-4">
+<label class="cursor-pointer bg-primary text-white px-8 py-3.5 rounded-xl font-bold hover:bg-opacity-90 transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
+<input accept=".xlsx, .xls, .csv" class="hidden" id="file-input" type="file"/>
+<span class="material-symbols-outlined text-sm" data-icon="attach_file">attach_file</span>
+                                Seleccionar archivo
+                            </label>
+<button class="bg-white border border-slate-200 text-slate-700 px-8 py-3.5 rounded-xl font-bold hover:bg-slate-50 transition-all flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                                Bajar Plantilla
+                            </button>
+</div>
+<div class="flex items-center gap-4 mt-8">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-green-50 border-2 border-white flex items-center justify-center"><span class="text-[10px] font-bold text-green-600">XL</span></div>
+<div class="w-6 h-6 rounded-full bg-blue-50 border-2 border-white flex items-center justify-center"><span class="text-[10px] font-bold text-blue-600">CSV</span></div>
+</div>
+<p class="text-xs text-slate-400 font-mono-sm uppercase tracking-tighter">Soporta: XLSX, XLS, CSV • Máx 25MB</p>
+</div>
+</div>
+<!-- Progress Mockup (Hidden by default) -->
+<div class="hidden mt-10 p-8 border border-slate-200 rounded-2xl bg-white shadow-sm" id="upload-progress">
+<div class="flex items-center gap-4 mb-4">
+<div class="p-3 bg-secondary/10 rounded-xl">
+<span class="material-symbols-outlined text-secondary" data-icon="description">description</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-end mb-2">
+<span class="text-body-md font-bold text-primary">nomina_dotacion_octubre_final.xlsx</span>
+<span class="text-body-sm font-bold text-secondary">85%</span>
+</div>
+<div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+<div class="bg-secondary h-full transition-all duration-500 rounded-full shadow-[0_0_8px_rgba(27,95,170,0.5)]" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<p class="text-xs text-slate-400 flex items-center gap-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+                            Analizando estructura del archivo y validando 1.254 registros...
+                        </p>
+</div>
+</div>
+<div class="px-8 py-6 bg-slate-50/50 border-t border-slate-100 flex justify-between items-center">
+<button class="text-slate-500 font-bold px-4 py-2 hover:text-primary transition-colors">Cancelar operación</button>
+<button class="bg-primary/20 text-white px-10 py-3.5 rounded-xl font-bold cursor-not-allowed transition-all" disabled="">
+                        Validar y Continuar
+                    </button>
+</div>
+</section>
+<!-- Sidebar / Instructions -->
+<aside class="col-span-12 lg:col-span-4 space-y-8">
+<!-- Requirements Card -->
+<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-7xl" data-icon="verified">verified</span>
+</div>
+<h4 class="font-bold text-primary text-lg mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="inventory_2">inventory_2</span>
+                        Protocolo de Archivo
+                    </h4>
+<ul class="space-y-6 relative z-10">
+<li class="flex items-start gap-4">
+<div class="w-6 h-6 rounded-full bg-green-500 flex-shrink-0 flex items-center justify-center mt-0.5">
+<span class="material-symbols-outlined text-white text-[14px]" data-icon="check">check</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-primary">Validación de RUT</p>
+<p class="text-[13px] text-slate-500 leading-snug">Obligatorio con DV. Formatos aceptados: 12.345.678-9 o 12345678-9.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-6 h-6 rounded-full bg-green-500 flex-shrink-0 flex items-center justify-center mt-0.5">
+<span class="material-symbols-outlined text-white text-[14px]" data-icon="check">check</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-primary">Codificación Unidades</p>
+<p class="text-[13px] text-slate-500 leading-snug">Utilice el catálogo de centros de costo UC (e.g. CC-1002).</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-6 h-6 rounded-full bg-green-500 flex-shrink-0 flex items-center justify-center mt-0.5">
+<span class="material-symbols-outlined text-white text-[14px]" data-icon="check">check</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-primary">Email Corporativo</p>
+<p class="text-[13px] text-slate-500 leading-snug">Debe ser el correo institucional (@uchristus.cl o @uc.cl).</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Support Card -->
+<div class="bg-primary rounded-2xl p-8 relative overflow-hidden shadow-xl shadow-primary/20">
+<div class="relative z-10">
+<h4 class="font-bold text-white text-lg mb-2">Asistencia Técnica</h4>
+<p class="text-white/70 text-body-sm mb-6 leading-relaxed">¿Tiene problemas con el formato? Nuestro equipo de soporte está disponible para ayudarle.</p>
+<a class="inline-flex items-center gap-2 bg-white text-primary px-5 py-2.5 rounded-lg font-bold text-xs hover:bg-slate-100 transition-all" href="#">
+                            CENTRO DE AYUDA
+                            <span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-[120px] text-white/5 rotate-12" data-icon="contact_support">contact_support</span>
+</div>
+<!-- Recent Activity -->
+<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Historial de Cargas</h4>
+<div class="space-y-5">
+<div class="flex items-center justify-between pb-4 border-b border-slate-50">
+<div>
+<p class="text-body-sm font-bold text-primary truncate w-40">nomina_oct_v2.csv</p>
+<p class="text-[11px] text-slate-400 mt-0.5">14 de Oct • 1.240 filas</p>
+</div>
+<span class="text-[10px] font-bold text-green-700 bg-green-50 px-2.5 py-1 rounded-full border border-green-100 uppercase">Procesado</span>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-body-sm font-bold text-primary truncate w-40">ajuste_servicios.xlsx</p>
+<p class="text-[11px] text-slate-400 mt-0.5">08 de Oct • 45 filas</p>
+</div>
+<span class="text-[10px] font-bold text-green-700 bg-green-50 px-2.5 py-1 rounded-full border border-green-100 uppercase">Procesado</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Error Table Mockup (For Step 2 Reference) -->
+<div class="mt-12 hidden" id="step-2-preview">
+<div class="bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
+<div class="p-6 bg-red-50 border-b border-red-100 flex items-center justify-between">
+<div class="flex items-center gap-3 text-red-700">
+<span class="material-symbols-outlined" data-icon="error_outline">error_outline</span>
+<h3 class="font-bold">Se encontraron 3 errores en el archivo</h3>
+</div>
+<button class="text-xs font-bold text-red-700 underline">Descargar informe detallado</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 text-slate-400 text-[11px] uppercase tracking-wider font-bold">
+<th class="px-6 py-4 border-b border-slate-100">Fila</th>
+<th class="px-6 py-4 border-b border-slate-100">Campo</th>
+<th class="px-6 py-4 border-b border-slate-100">Valor detectado</th>
+<th class="px-6 py-4 border-b border-slate-100">Descripción del error</th>
+<th class="px-6 py-4 border-b border-slate-100">Acción</th>
+</tr>
+</thead>
+<tbody class="text-body-sm">
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 border-b border-slate-100 font-mono-sm text-slate-400">#42</td>
+<td class="px-6 py-4 border-b border-slate-100 font-bold text-primary">RUT</td>
+<td class="px-6 py-4 border-b border-slate-100 text-red-600">31-02-2026</td>
+<td class="px-6 py-4 border-b border-slate-100 text-slate-500 italic">Formato de fecha inválido. Debe ser DD-MM-AAAA.</td>
+<td class="px-6 py-4 border-b border-slate-100"><button class="text-secondary font-bold hover:underline">Corregir</button></td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 border-b border-slate-100 font-mono-sm text-slate-400">#108</td>
+<td class="px-6 py-4 border-b border-slate-100 font-bold text-primary">Fecha Ingreso</td>
+<td class="px-6 py-4 border-b border-slate-100 text-red-600">juan.perez@gmail.com</td>
+<td class="px-6 py-4 border-b border-slate-100 text-slate-500 italic">Debe ser un correo institucional (@uchristus.cl).</td>
+<td class="px-6 py-4 border-b border-slate-100"><button class="text-secondary font-bold hover:underline">Corregir</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const progressArea = document.getElementById('upload-progress');
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, () => {
+            dropZone.classList.add('border-secondary', 'bg-slate-50', 'scale-[0.99]');
+        }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, () => {
+            dropZone.classList.remove('border-secondary', 'bg-slate-50', 'scale-[0.99]');
+        }, false);
+    });
+
+    dropZone.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleFiles(files);
+    }
+
+    fileInput.addEventListener('change', function() {
+        handleFiles(this.files);
+    });
+
+    function handleFiles(files) {
+        if (files.length > 0) {
+            // Visual feedback
+            progressArea.classList.remove('hidden');
+            dropZone.classList.add('opacity-40', 'pointer-events-none');
+            
+            // Simulate processing
+            setTimeout(() => {
+                const btn = document.querySelector('button[disabled]');
+                if(btn) {
+                    btn.disabled = false;
+                    btn.classList.remove('bg-primary/20', 'cursor-not-allowed');
+                    btn.classList.add('bg-primary', 'hover:bg-opacity-90', 'shadow-lg', 'shadow-primary/30');
+                }
+            }, 1500);
+        }
+    }
+</script>
+<script src="js/app.js"></script><script>
+
+function $btn(txt){var els=document.querySelectorAll('button,a');for(var i=0;i<els.length;i++){if(els[i].textContent.replace(/\s+/g,' ').trim().indexOf(txt)>=0)return els[i];}return null;}
+function $btnAll(txt){var out=[],els=document.querySelectorAll('button,a');for(var i=0;i<els.length;i++){if(els[i].textContent.replace(/\s+/g,' ').trim().indexOf(txt)>=0)out.push(els[i]);}return out;}
+function hideCard(txt){var els=document.querySelectorAll('h3,h4,h5');for(var i=0;i<els.length;i++){if(els[i].textContent.indexOf(txt)>=0){var c=els[i].closest('div.bg-white,div.relative,div[class*="rounded"]');if(c){c.style.display='none';}return;}}}
+function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.setAttribute('data-accion','1');if(el.tagName==='A'){el.setAttribute('href','#');}}
+
+(function(){
+  var drop=document.getElementById('drop-zone');
+  var input=document.getElementById('file-input');
+  var progreso=document.getElementById('upload-progress');
+  var preview=document.getElementById('step-2-preview');
+  var sel=$btn('Seleccionar archivo');
+  var validar=$btn('Validar y Continuar');
+  var cancelar=$btn('Cancelar operaci\u00f3n');
+  var paso=1;
+  function marcarPaso(n){
+    var labels=['SUBIR','VALIDACI\u00d3N','CONFIRMACI\u00d3N'];
+    document.querySelectorAll('span,p,div').forEach(function(el){
+      if(el.children.length>0)return;
+      var t=el.textContent.trim().toUpperCase();
+      labels.forEach(function(l,i){
+        if(t.indexOf(l)===0&&t.length<20){
+          el.style.color=(i<n)?'#1B5FAA':'';
+          el.style.fontWeight=(i===n-1)?'800':'';
+        }
+      });
+    });
+  }
+  function simularArchivo(){
+    if(paso!==1)return;
+    if(progreso){progreso.classList.remove('hidden');}
+    if(drop){drop.classList.add('opacity-40','pointer-events-none');}
+    setTimeout(function(){
+      if(validar){
+        validar.removeAttribute('disabled');
+        validar.classList.remove('bg-primary/20','cursor-not-allowed');
+        validar.classList.add('bg-primary');
+      }
+      if(window.AcreditatorDemo){AcreditatorDemo.toast('nomina_julio_2026.xlsx recibido \u00b7 248 filas detectadas');}
+    },900);
+  }
+  if(sel){sel.addEventListener('click',function(e){e.preventDefault();simularArchivo();});}
+  if(input){input.addEventListener('change',simularArchivo);}
+  toastify($btn('Bajar Plantilla'),'Plantilla oficial descargada (simulado)');
+  $btnAll('Corregir').forEach(function(b){toastify(b,'Correcci\u00f3n en l\u00ednea disponible en versi\u00f3n productiva');});
+  toastify($btn('Descargar informe detallado'),'Informe de errores descargado (simulado)');
+  if(validar){validar.addEventListener('click',function(e){
+    e.preventDefault();
+    if(validar.hasAttribute('disabled'))return;
+    if(paso===1){
+      paso=2;marcarPaso(2);
+      if(preview){preview.classList.remove('hidden');preview.scrollIntoView({behavior:'smooth',block:'start'});}
+      validar.textContent='Confirmar carga (245 v\u00e1lidas)';
+      if(window.AcreditatorDemo){AcreditatorDemo.toast('Validaci\u00f3n completa: 245 filas v\u00e1lidas \u00b7 3 con error','warn');}
+      return;
+    }
+    if(paso===2){
+      paso=3;marcarPaso(3);
+      var card=preview?preview.firstElementChild:null;
+      if(preview){preview.innerHTML=
+        '<div class="bg-white rounded-2xl border border-slate-200 shadow-lg p-10 text-center">'+
+        '<span class="material-symbols-outlined text-[56px] text-[#166534]">task_alt</span>'+
+        '<h3 class="text-headline-md font-bold mt-3 mb-1">Carga confirmada</h3>'+
+        '<p class="text-body-md text-[#44474e] mb-1">245 registros incorporados a la dotaci\u00f3n. 3 filas con error quedaron excluidas y disponibles en el informe.</p>'+
+        '<p class="text-body-sm text-[#44474e] mb-6">Los registros v\u00e1lidos no fueron bloqueados por las filas con error.</p>'+
+        '<a class="inline-block bg-secondary text-white font-bold px-6 py-3 rounded-xl hover:bg-[#164e8c]" href="dotacion.html">Volver a Dotaci\u00f3n</a></div>';
+        preview.scrollIntoView({behavior:'smooth',block:'center'});}
+      validar.style.display='none';
+      if(cancelar){cancelar.style.display='none';}
+    }
+  });}
+  if(cancelar){cancelar.addEventListener('click',function(e){e.preventDefault();location.href='dotacion.html';});}
+})();
+</script></body></html>

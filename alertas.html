@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Acreditator - Alertas y Recordatorios</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#241000",
+                    "tertiary-fixed-dim": "#ffb778",
+                    "outline-variant": "#c4c6cf",
+                    "on-background": "#191c1e",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#7c91b7",
+                    "surface-tint": "#4a5f83",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-bright": "#f7f9fc",
+                    "surface-variant": "#e0e3e6",
+                    "background": "#f7f9fc",
+                    "on-tertiary-fixed": "#2e1500",
+                    "surface-container": "#eceef1",
+                    "surface": "#f7f9fc",
+                    "secondary-fixed-dim": "#a7c8ff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#d5e3ff",
+                    "primary-fixed-dim": "#b2c7f0",
+                    "on-secondary-fixed": "#001c3b",
+                    "surface-dim": "#d8dadd",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "primary-container": "#12294a",
+                    "on-tertiary-container": "#d67900",
+                    "secondary-container": "#76adfd",
+                    "on-surface-variant": "#44474e",
+                    "on-primary-fixed": "#021b3c",
+                    "outline": "#74777f",
+                    "on-tertiary-fixed-variant": "#6c3a00",
+                    "on-primary-fixed-variant": "#32476a",
+                    "tertiary-fixed": "#ffdcc1",
+                    "secondary": "#1b5faa",
+                    "on-surface": "#191c1e",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#b2c7f0",
+                    "tertiary-container": "#412100",
+                    "inverse-surface": "#2d3133",
+                    "primary": "#001431",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f2f4f7",
+                    "inverse-on-surface": "#eff1f4",
+                    "on-secondary-container": "#003f7a",
+                    "surface-container-highest": "#e0e3e6",
+                    "surface-container-high": "#e6e8eb",
+                    "on-secondary-fixed-variant": "#004787",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-page": "24px",
+                    "gutter": "16px",
+                    "stack-compact": "8px",
+                    "container-max": "1440px",
+                    "stack-default": "16px",
+                    "nav-width": "260px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "mono-sm": ["JetBrains Mono"],
+                    "headline-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "mono-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "headline-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f7f9fc;
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c4c6cf;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #74777f;
+        }
+        /* Glassmorphism / Premium card accents */
+        .premium-card {
+            background: #ffffff;
+            box-shadow: 0 4px 20px -2px rgba(0, 20, 49, 0.08);
+            transition: all 0.3s ease;
+        }
+        .premium-card:hover {
+            box-shadow: 0 10px 30px -5px rgba(0, 20, 49, 0.12);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<div class="flex min-h-screen">
+<!-- SideNavBar - Institutional Navy -->
+<aside class="w-[260px] h-screen sticky top-0 left-0 bg-[#12294A] text-white flex flex-col py-8 border-r border-white/5 z-50 shrink-0"><div class="px-6 mb-10"><div class="bg-white rounded-lg px-3 py-2 mb-3 inline-block"><span class="block text-[11px] leading-tight font-semibold text-[#12294A]">Red de Salud</span><span class="block text-[13px] leading-tight font-extrabold text-[#12294A]">UC · CHRISTUS</span></div><div class="flex items-center gap-2"><span class="w-2 h-2 bg-secondary rounded-full"></span><h1 class="text-headline-sm font-bold tracking-tight">Acreditator</h1></div></div><nav class="flex-1 overflow-y-auto"><ul class="space-y-1"><li data-roles="admin,encargado,auditor"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="panel.html"><span class="material-symbols-outlined mr-3 text-[20px]">dashboard</span><span>Panel</span></a></li><li data-roles="admin,encargado,auditor"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="punto.html"><span class="material-symbols-outlined mr-3 text-[20px]">verified_user</span><span>Puntos de acreditación</span></a></li><li data-roles="admin,encargado"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="dotacion.html"><span class="material-symbols-outlined mr-3 text-[20px]">groups</span><span>Dotación</span></a></li><li data-roles="admin,encargado"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="sincronizacion.html"><span class="material-symbols-outlined mr-3 text-[20px]">sync</span><span>Sincronización</span></a></li><li data-roles="admin,encargado"><a class="flex items-center px-6 py-3 bg-white/10 text-white font-semibold border-l-4 border-secondary transition-all duration-200" href="alertas.html"><span class="material-symbols-outlined mr-3 text-[20px]">notifications</span><span>Alertas</span></a></li><li data-roles="admin,encargado"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="reportes.html"><span class="material-symbols-outlined mr-3 text-[20px]">assessment</span><span>Reportes</span></a></li><li data-roles="admin"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="unidades.html"><span class="material-symbols-outlined mr-3 text-[20px]">corporate_fare</span><span>Unidades</span></a></li><li data-roles="jefatura"><a class="flex items-center px-6 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200" href="jefatura.html"><span class="material-symbols-outlined mr-3 text-[20px]">medical_services</span><span>Mi servicio</span></a></li></ul></nav><div class="mt-auto px-4 py-4 border-t border-white/10"><a class="flex items-center px-4 py-3 text-white/60 hover:text-white transition-colors" href="index.html" data-logout="1"><span class="material-symbols-outlined mr-3 text-[20px]">logout</span><span class="text-sm">Cerrar sesión</span></a></div></aside>
+<!-- Main Content -->
+<main class="flex-grow overflow-y-auto">
+<!-- TopNavBar -->
+<header class="w-full h-16 sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-outline-variant flex justify-between items-center px-margin-page">
+<div class="flex items-center">
+<h2 class="text-headline-sm font-headline-sm text-primary">Historial de Alertas y Configuración</h2>
+</div>
+<div class="flex items-center gap-stack-default">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-container-low border border-outline-variant rounded-full text-body-sm w-72 focus:ring-2 focus:ring-secondary focus:bg-white transition-all outline-none" placeholder="Buscar alertas, destinatarios o puntos..." type="text"/>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-all duration-150">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+</button>
+<div class="w-px h-6 bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden lg:block">
+<p class="text-label-md font-bold text-on-surface leading-tight" data-user-name="1">Admin UC</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Administrador Central</p>
+</div>
+<div class="w-9 h-9 rounded-full ring-2 ring-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyz3YN8Otzghf282F1soiKsvTselNPmLJ3KkJ2yhxDe8bXYCng48rzp8V83rYMn3ACaONL5DdCi-mP3Q8On23INzPJeKPox5_PHwIcqu0_HBJbq0tuoqN0m3btTTI50QOvENNw0VtHDYpjEMjYkfIPQA5fXlu-vBfSNCcy7l9GHTGURienHvDXvsAIerq-gOZkiM3FZ6_aBve8qT07LO7GMZeYrdZiLjqr6LpEyG6VkPLkkFYhKy2vuLTtRp4HOEPbJJUUefXCa-GT"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-margin-page max-w-[1440px] mx-auto space-y-stack-default">
+<!-- KPI Row -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="premium-card p-stack-default border border-outline-variant rounded-xl">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Alertas Totales (Mes)</p>
+<div class="flex items-end gap-2">
+<span class="text-headline-lg font-headline-lg text-primary">128</span>
+<span class="text-error font-label-md text-label-md flex items-center mb-1">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span> 12%
+                            </span>
+</div>
+</div>
+<div class="premium-card p-stack-default border border-outline-variant rounded-xl">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Remediación Promedio</p>
+<div class="flex items-end gap-2">
+<span class="text-headline-lg font-headline-lg text-primary">4.2h</span>
+<span class="text-on-tertiary-container font-label-md text-label-md flex items-center mb-1">
+<span class="material-symbols-outlined text-sm" data-icon="trending_flat">trending_flat</span> 0%
+                            </span>
+</div>
+</div>
+<div class="premium-card p-stack-default border border-outline-variant rounded-xl">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Alertas Críticas</p>
+<div class="flex items-end gap-2">
+<span class="text-headline-lg font-headline-lg text-error">12</span>
+<span class="text-on-secondary-container font-label-md text-label-md flex items-center mb-1">
+<span class="material-symbols-outlined text-sm" data-icon="trending_down">trending_down</span> 5%
+                            </span>
+</div>
+</div>
+<div class="premium-card p-stack-default border border-outline-variant rounded-xl">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Tasa de Entrega</p>
+<div class="flex items-end gap-2">
+<span class="text-headline-lg font-headline-lg text-primary">99.8%</span>
+<span class="text-on-primary-container font-label-md text-label-md flex items-center mb-1">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Bento Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Alert Log Table - Premium Look -->
+<section class="lg:col-span-8 premium-card border border-outline-variant rounded-xl overflow-hidden flex flex-col min-h-[500px]">
+<div class="p-5 border-b border-outline-variant flex justify-between items-center bg-white">
+<h3 class="font-headline-sm text-headline-sm text-primary flex items-center">
+<span class="material-symbols-outlined mr-3 text-secondary" data-icon="history">history</span>
+                                Log de Alertas Recientes
+                            </h3>
+<div class="flex gap-2">
+<button class="flex items-center gap-1.5 px-3 py-1.5 border border-outline-variant rounded-lg text-on-surface-variant font-label-md hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span> Filtrar
+                                </button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-secondary text-white rounded-lg font-label-md hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span> Exportar
+                                </button>
+</div>
+</div>
+<div class="overflow-x-auto flex-grow custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low sticky top-0 z-10">
+<tr>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant uppercase tracking-wider">Fecha</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant uppercase tracking-wider">Destinatario</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant uppercase tracking-wider">Resumen Alerta</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant uppercase tracking-wider">Punto</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant uppercase tracking-wider">Estado</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4 font-mono-sm text-mono-sm text-on-surface-variant">2023-10-27 09:12</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-[10px] text-white font-bold">MI</div>
+<span class="font-body-md font-semibold text-primary">Jefatura Medicina Interna</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface">Cumplimiento higiene de manos &lt; 85%</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-surface-container rounded text-[11px] font-mono-sm text-on-surface-variant">IAAS-004</span></td>
+<td class="px-6 py-4"><span class="bg-red-50 text-red-700 border border-red-100 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight">Crítico</span></td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4 font-mono-sm text-mono-sm text-on-surface-variant">2023-10-27 08:45</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-on-secondary-container flex items-center justify-center text-[10px] text-white font-bold">DE</div>
+<span class="font-body-md font-semibold text-primary">Dirección de Enfermería</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface">Vencimiento dotación mínima turno B</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-surface-container rounded text-[11px] font-mono-sm text-on-surface-variant">DOT-012</span></td>
+<td class="px-6 py-4"><span class="bg-orange-50 text-orange-700 border border-orange-100 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight">Advertencia</span></td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4 font-mono-sm text-mono-sm text-on-surface-variant">2023-10-26 17:20</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-[10px] text-on-surface-variant font-bold">PC</div>
+<span class="font-body-md font-semibold text-primary">Jefatura Pabellón Central</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface">Punto de control 18.2 sin sincronización</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-surface-container rounded text-[11px] font-mono-sm text-on-surface-variant">SYNC-ERROR</span></td>
+<td class="px-6 py-4"><span class="bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight">Info</span></td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4 font-mono-sm text-mono-sm text-on-surface-variant">2023-10-26 14:05</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-[10px] text-white font-bold">JL</div>
+<span class="font-body-md font-semibold text-primary">Jefatura Laboratorio</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface">Documentación vencida en Registro Clínico</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-surface-container rounded text-[11px] font-mono-sm text-on-surface-variant">REG-CL-01</span></td>
+<td class="px-6 py-4"><span class="bg-red-50 text-red-700 border border-red-100 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight">Crítico</span></td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4 font-mono-sm text-mono-sm text-on-surface-variant">2023-10-26 11:30</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-[10px] text-green-800 font-bold">GC</div>
+<span class="font-body-md font-semibold text-primary">Gerencia Calidad</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface">Meta semanal alcanzada: UMAE-P</td>
+<td class="px-6 py-4"><span class="px-2 py-1 bg-surface-container rounded text-[11px] font-mono-sm text-on-surface-variant">CAL-META</span></td>
+<td class="px-6 py-4"><span class="bg-green-50 text-green-700 border border-green-100 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight">Éxito</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-outline-variant bg-surface-container-low flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Mostrando <span class="font-bold text-on-surface">5</span> de <span class="font-bold text-on-surface">1,240</span> registros</span>
+<div class="flex items-center gap-3">
+<span class="text-body-sm text-on-surface-variant">Página 1 de 248</span>
+<div class="flex gap-1">
+<button class="p-1.5 border border-outline-variant rounded-lg hover:bg-white transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="p-1.5 border border-outline-variant rounded-lg hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Config Section - Premium Rules -->
+<aside class="lg:col-span-4 space-y-gutter">
+<section class="premium-card border border-outline-variant rounded-xl p-5">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-sm text-headline-sm text-primary">Reglas Automáticas</h3>
+<button class="bg-primary text-white px-4 py-2 rounded-full font-label-md text-label-md flex items-center hover:bg-primary/90 shadow-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm mr-2" data-icon="add">add</span> Nueva Regla
+                                </button>
+</div>
+<div class="space-y-4">
+<!-- Rule Card Premium -->
+<div class="p-4 border border-outline-variant rounded-xl bg-white hover:border-secondary transition-colors group">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-secondary uppercase tracking-[0.1em] mb-0.5">Cumplimiento Bajo</span>
+<p class="font-body-md text-body-md font-bold text-primary">Alerta de punto &lt; 85%</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5.5 bg-surface-container rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[3px] after:left-[3px] after:bg-white after:border-outline-variant after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-primary/5 text-primary-fixed-variant px-2.5 py-1 rounded-md text-[11px] font-semibold flex items-center"><span class="material-symbols-outlined text-xs mr-1.5" data-icon="mail">mail</span> Correo</span>
+<span class="bg-primary/5 text-primary-fixed-variant px-2.5 py-1 rounded-md text-[11px] font-semibold flex items-center"><span class="material-symbols-outlined text-xs mr-1.5" data-icon="update">update</span> Semanal</span>
+</div>
+<div class="flex justify-end gap-4 border-t border-outline-variant pt-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-[11px] font-bold text-secondary hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="edit">edit</span> EDITAR
+                                        </button>
+<button class="text-[11px] font-bold text-error hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="delete">delete</span> ELIMINAR
+                                        </button>
+</div>
+</div>
+<!-- Rule Card Premium -->
+<div class="p-4 border border-outline-variant rounded-xl bg-white hover:border-secondary transition-colors group">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-secondary uppercase tracking-[0.1em] mb-0.5">Falta Dotación</span>
+<p class="font-body-md text-body-md font-bold text-primary">Alerta cupo crítico enfermería</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5.5 bg-surface-container rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[3px] after:left-[3px] after:bg-white after:border-outline-variant after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-primary/5 text-primary-fixed-variant px-2.5 py-1 rounded-md text-[11px] font-semibold flex items-center"><span class="material-symbols-outlined text-xs mr-1.5" data-icon="sms">sms</span> SMS / Push</span>
+<span class="bg-primary/5 text-primary-fixed-variant px-2.5 py-1 rounded-md text-[11px] font-semibold flex items-center"><span class="material-symbols-outlined text-xs mr-1.5" data-icon="bolt">bolt</span> Inmediato</span>
+</div>
+<div class="flex justify-end gap-4 border-t border-outline-variant pt-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-[11px] font-bold text-secondary hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="edit">edit</span> EDITAR
+                                        </button>
+<button class="text-[11px] font-bold text-error hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="delete">delete</span> ELIMINAR
+                                        </button>
+</div>
+</div>
+<!-- Inactive Rule -->
+<div class="p-4 border border-outline-variant rounded-xl bg-surface-container-low opacity-60">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.1em] mb-0.5">Reporte Mensual</span>
+<p class="font-body-md text-body-md font-bold text-primary">Cierre indicadores calidad</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5.5 bg-outline rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[3px] after:left-[3px] after:bg-white after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-white/50 text-on-surface-variant px-2.5 py-1 rounded-md text-[11px] font-semibold flex items-center"><span class="material-symbols-outlined text-xs mr-1.5" data-icon="mail">mail</span> Correo</span>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-primary text-white rounded-xl p-5 shadow-lg overflow-hidden relative border border-white/10">
+<div class="relative z-10">
+<h4 class="font-headline-sm text-headline-sm mb-2 text-white">Salud del Sistema</h4>
+<div class="flex items-center gap-3 mb-5">
+<div class="flex h-3 w-3 items-center justify-center">
+<span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+</div>
+<p class="font-body-md text-body-md text-primary-fixed">Notificaciones en línea</p>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-[11px] font-bold uppercase tracking-wider text-primary-fixed-dim">
+<span>Consumo API Mensual</span>
+<span>94%</span>
+</div>
+<div class="w-full bg-white/10 h-2.5 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full w-[94%] rounded-full shadow-[0_0_8px_rgba(118,173,253,0.5)]"></div>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -bottom-6 -right-6 text-white/5 text-9xl select-none" data-icon="bolt">bolt</span>
+</section>
+</aside>
+</div>
+<!-- Footer Quick Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mt-stack-default">
+<div class="premium-card p-5 border border-outline-variant rounded-xl flex items-center">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mr-4">
+<span class="material-symbols-outlined" data-icon="outgoing_mail">outgoing_mail</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant font-bold uppercase tracking-wide">Enviados Hoy</p>
+<p class="font-headline-sm text-headline-sm text-primary">842 <span class="text-green-600 text-xs font-normal">+5%</span></p>
+</div>
+</div>
+<div class="premium-card p-5 border border-outline-variant rounded-xl flex items-center">
+<div class="w-12 h-12 rounded-full bg-on-tertiary-container/10 flex items-center justify-center text-on-tertiary-container mr-4">
+<span class="material-symbols-outlined" data-icon="sms_failed">sms_failed</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant font-bold uppercase tracking-wide">Rebotados</p>
+<p class="font-headline-sm text-headline-sm text-primary">0 <span class="text-on-surface-variant text-xs font-normal">Sin cambios</span></p>
+</div>
+</div>
+<div class="premium-card p-5 border border-outline-variant rounded-xl flex items-center">
+<div class="w-12 h-12 rounded-full bg-error/10 flex items-center justify-center text-error mr-4">
+<span class="material-symbols-outlined" data-icon="notification_important">notification_important</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant font-bold uppercase tracking-wide">Sin Configurar</p>
+<p class="font-headline-sm text-headline-sm text-error">4 <span class="text-on-surface-variant text-xs font-normal">puntos</span></p>
+</div>
+</div>
+</div>
+</div>
+<footer class="mt-12 py-8 px-margin-page border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant text-body-sm">
+<div class="flex items-center gap-2">
+<img alt="Logo" class="h-6 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpyJfcvQDhIQK8-r-FvmnMZUH0Y2VtuASi3I-pUr5JCQ6QMcz3B362Gf6dGnR4UM-MpI6d9o4y3LUe-qysbiHEmIU4mwYaYoj-UC9cAAqJh3-TjMjSguN4OToatcRJhJhFDiYbANfDKhEycuFDhWXC9g8qluFZLOw3TyMLyFmN8XITbPd8emhc5fW74EPN6QHYghJ-52FUqJT2zq20jvf3DzdSoJcLg3HgB5T5Tx6PMWo5U1gXZYiYpDdp7_CmECrsue8TIYkhlKoR"/>
+<span>© 2023 Red de Salud UC CHRISTUS. Todos los derechos reservados.</span>
+</div>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Soporte Técnico</a>
+<a class="hover:text-primary transition-colors" href="#">Términos de Uso</a>
+<a class="hover:text-primary transition-colors" href="#">Privacidad</a>
+</div>
+</footer>
+</main>
+</div>
+<!-- Interactive Scripts -->
+<script>
+        // Toggle Switch Animation & Visual State Update
+        document.querySelectorAll('input[type="checkbox"]').forEach(toggle => {
+            toggle.addEventListener('change', (e) => {
+                const card = e.target.closest('.rounded-xl');
+                if (e.target.checked) {
+                    card.classList.remove('opacity-60', 'bg-surface-container-low');
+                    card.classList.add('bg-white');
+                } else {
+                    card.classList.add('opacity-60', 'bg-surface-container-low');
+                    card.classList.remove('bg-white');
+                }
+            });
+        });
+
+        // Add visual indicator to active row on hover
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.classList.add('shadow-inner');
+            });
+            row.addEventListener('mouseleave', () => {
+                row.classList.remove('shadow-inner');
+            });
+        });
+    </script>
+<script src="js/app.js"></script><script>
+
+function $btn(txt){var els=document.querySelectorAll('button,a');for(var i=0;i<els.length;i++){if(els[i].textContent.replace(/\s+/g,' ').trim().indexOf(txt)>=0)return els[i];}return null;}
+function $btnAll(txt){var out=[],els=document.querySelectorAll('button,a');for(var i=0;i<els.length;i++){if(els[i].textContent.replace(/\s+/g,' ').trim().indexOf(txt)>=0)out.push(els[i]);}return out;}
+function hideCard(txt){var els=document.querySelectorAll('h3,h4,h5');for(var i=0;i<els.length;i++){if(els[i].textContent.indexOf(txt)>=0){var c=els[i].closest('div.bg-white,div.relative,div[class*="rounded"]');if(c){c.style.display='none';}return;}}}
+function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.setAttribute('data-accion','1');if(el.tagName==='A'){el.setAttribute('href','#');}}
+
+(function(){
+  toastify($btn('Nueva Regla'),'Creaci\u00f3n de reglas disponible en versi\u00f3n productiva');
+  toastify($btn('Exportar'),'Log de alertas exportado (simulado)');
+  toastify($btn('Filtrar'),'Filtros avanzados disponibles en versi\u00f3n productiva');
+  toastify($btn('VER HISTORIAL COMPLETO'),'Historial completo disponible en versi\u00f3n productiva');
+})();
+</script></body></html>
