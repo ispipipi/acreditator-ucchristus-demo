@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="light" lang="es"><head>
+<html class="light" lang="es"><head><script>/* QA#6: guard de sesion antes de renderizar */try{if(!(JSON.parse(localStorage.getItem('acreditator-ucchristus-v1')||'{}').rol)){location.replace('index.html');}}catch(e){location.replace('index.html');}</script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ficha de Funcionario - Acreditator UC CHRISTUS</title>
@@ -393,5 +393,29 @@ function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.set
   toastify($btn('Cargar Documento'),'Respaldo cargado y vinculado a la ficha (simulado)');
   toastify($btn('Exportar Ficha'),'Ficha exportada a PDF (simulado)');
   toastify($btn('Ver historial completo'),'Historial completo disponible en versi\u00f3n productiva');
+})();
+</script><script>
+(function(){
+  /* QA#7: link Volver con retorno al origen */
+  var main=document.querySelector('main')||document.body;
+  var back=document.createElement('a');
+  back.href='dotacion.html';
+  back.className='inline-flex items-center gap-1 text-body-sm font-semibold text-secondary hover:underline mb-4';
+  back.innerHTML='<span class="material-symbols-outlined text-[18px]">arrow_back</span>Volver';
+  back.addEventListener('click',function(e){
+    e.preventDefault();
+    if(document.referrer&&document.referrer.indexOf(location.host)>=0&&history.length>1){history.back();}
+    else{location.href='dotacion.html';}
+  });
+  if(main.firstElementChild){main.insertBefore(back,main.firstElementChild);}else{main.appendChild(back);}
+  /* QA#4: contraste accesible en badges vencido/expirado */
+  document.querySelectorAll('span,div,p').forEach(function(el){
+    if(el.children.length>0)return;
+    var t=el.textContent.trim().toUpperCase();
+    if(t==='VENCIDO'||t==='EXPIRADO'){
+      el.style.color='#93000a';el.style.background='#ffdad6';el.style.fontWeight='700';
+      el.style.padding='2px 8px';el.style.borderRadius='999px';
+    }
+  });
 })();
 </script></body></html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="light" lang="es"><head>
+<html class="light" lang="es"><head><script>/* QA#6: guard de sesion antes de renderizar */try{if(!(JSON.parse(localStorage.getItem('acreditator-ucchristus-v1')||'{}').rol)){location.replace('index.html');}}catch(e){location.replace('index.html');}</script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Acreditator - Reportería Configurable</title>
@@ -427,15 +427,32 @@
     });
 </script>
 <script src="js/app.js"></script><script>
-
 function $btn(txt){var els=document.querySelectorAll('button,a');for(var i=0;i<els.length;i++){if(els[i].textContent.replace(/\s+/g,' ').trim().indexOf(txt)>=0)return els[i];}return null;}
-function $btnAll(txt){var out=[],els=document.querySelectorAll('button,a');for(var i=0;i<els.length;i++){if(els[i].textContent.replace(/\s+/g,' ').trim().indexOf(txt)>=0)out.push(els[i]);}return out;}
-function hideCard(txt){var els=document.querySelectorAll('h3,h4,h5');for(var i=0;i<els.length;i++){if(els[i].textContent.indexOf(txt)>=0){var c=els[i].closest('div.bg-white,div.relative,div[class*="rounded"]');if(c){c.style.display='none';}return;}}}
 function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.setAttribute('data-accion','1');if(el.tagName==='A'){el.setAttribute('href','#');}}
-
 (function(){
+  /* QA#2: ocultar columnas via nth-child garantiza alineacion th/td */
   var tabla=document.querySelector('table');
-  var mapa={'RUT':0,'Nombre':1,'Cargo':2,'Servicio':3,'Vigencia':4};
+  if(tabla){tabla.id=tabla.id||'tabla-preview';}
+  var estilo=document.createElement('style');
+  document.head.appendChild(estilo);
+  var mapa={'RUT':1,'Nombre':2,'Cargo':3,'Servicio':4,'Vigencia':5};
+  var ocultas={};
+  function render(){
+    var sel=[];
+    Object.keys(ocultas).forEach(function(n){
+      if(ocultas[n]){
+        sel.push('#tabla-preview th:nth-child('+n+')');
+        sel.push('#tabla-preview td:nth-child('+n+')');
+      }
+    });
+    estilo.textContent=sel.length?sel.join(',')+'{display:none;}':'';
+    var visibles=5-Object.keys(ocultas).filter(function(n){return ocultas[n];}).length;
+    document.querySelectorAll('div,span,p').forEach(function(el){
+      if(el.children.length===0&&el.parentNode&&el.parentNode.textContent.indexOf('COLUMNAS')>=0&&/^\d+$/.test(el.textContent.trim())){
+        el.textContent=visibles;
+      }
+    });
+  }
   document.querySelectorAll('input[type="checkbox"]').forEach(function(chk){
     var cont=chk.closest('div,label');
     var label=cont?cont.textContent.trim():'';
@@ -446,21 +463,8 @@ function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.set
         if(window.AcreditatorDemo){AcreditatorDemo.toast('Columna "'+label+'" se agregar\u00e1 al template en versi\u00f3n productiva');}
         return;
       }
-      if(!tabla){return;}
-      tabla.querySelectorAll('tr').forEach(function(tr){
-        var celda=tr.children[col];
-        if(celda){celda.style.display=chk.checked?'':'none';}
-      });
-      var visibles=0;
-      document.querySelectorAll('input[type="checkbox"]').forEach(function(c2){if(c2.checked){visibles++;}});
-      var cnt=document.querySelectorAll('div,span,p');
-      for(var i=0;i<cnt.length;i++){
-        if(cnt[i].children.length===0&&/^\d$/.test(cnt[i].textContent.trim())&&cnt[i].textContent.trim()!==''+visibles){
-          /* actualizar contador COLUMNAS ACTIVAS si coincide contexto */
-          var padre=cnt[i].parentNode?cnt[i].parentNode.textContent:'';
-          if(padre.indexOf('COLUMNAS')>=0){cnt[i].textContent=visibles;}
-        }
-      }
+      ocultas[col]=!chk.checked;
+      render();
     });
   });
   toastify($btn('Exportar Excel'),'Reporte exportado con las columnas seleccionadas (simulado)');

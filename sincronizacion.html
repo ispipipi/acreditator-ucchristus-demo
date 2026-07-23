@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="light" lang="es"><head>
+<html class="light" lang="es"><head><script>/* QA#6: guard de sesion antes de renderizar */try{if(!(JSON.parse(localStorage.getItem('acreditator-ucchristus-v1')||'{}').rol)){location.replace('index.html');}}catch(e){location.replace('index.html');}</script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Acreditator - Sincronización Academia</title>
@@ -428,5 +428,19 @@ function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.set
   $btnAll('DETALLES').forEach(function(b){toastify(b,'Detalle de la corrida: 1.420 procesados \u00b7 247 aprobaciones nuevas');});
   toastify($btn('VER LOG'),'Log de error: timeout de conexi\u00f3n con Academia \u00b7 reintento autom\u00e1tico exitoso');
   toastify($btn('VER HISTORIAL COMPLETO'),'Historial completo disponible en versi\u00f3n productiva');
+})();
+</script><script>
+(function(){
+  /* QA#5: la fila donde vivia la tarjeta eliminada pasa a 1 columna fluida */
+  var els=document.querySelectorAll('h3,h4,h5');
+  for(var i=0;i<els.length;i++){
+    if(els[i].textContent.indexOf('Nodos de Red Local')>=0){
+      var card=els[i].closest('div.relative,div[class*="rounded"]');
+      var parent=card?card.parentElement:null;
+      while(parent&&parent.className.indexOf('grid')<0){parent=parent.parentElement;}
+      if(parent){parent.classList.remove('lg:grid-cols-3');parent.classList.add('lg:grid-cols-1');}
+      return;
+    }
+  }
 })();
 </script></body></html>

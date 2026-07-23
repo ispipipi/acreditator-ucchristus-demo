@@ -48,14 +48,19 @@
     var toastBtn = ev.target.closest('[data-toast]');
     if (toastBtn) {
       ev.preventDefault();
+      /* QA#1: auditor en solo lectura no ejecuta acciones, aunque el elemento se haya cableado después */
+      if (toastBtn.hasAttribute('disabled') || (rol === 'auditor' && toastBtn.hasAttribute('data-accion'))) { return; }
       toast(toastBtn.getAttribute('data-toast'), toastBtn.getAttribute('data-toast-tipo') || 'ok');
       return;
     }
     var go = ev.target.closest('[data-go]');
     if (go) { ev.preventDefault(); location.href = go.getAttribute('data-go'); return; }
-    /* Links muertos de Stitch → inertes */
-    var dead = ev.target.closest('a[href="#"]');
-    if (dead) { ev.preventDefault(); }
+    /* QA#3: links muertos de Stitch → inertes (href="#" o ancla sin destino) */
+    var dead = ev.target.closest('a');
+    if (dead) {
+      var h = dead.getAttribute('href') || '';
+      if (h === '#' || (h.charAt(0) === '#' && !document.getElementById(h.slice(1)))) { ev.preventDefault(); }
+    }
   });
 
   if (!isPublic && rol) {
