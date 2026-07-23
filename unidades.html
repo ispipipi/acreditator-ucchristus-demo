@@ -179,6 +179,7 @@
     { nombre: 'Laboratorio Central', global: 82, dot: 145, estado: 'warn', puntos: { '2.1': 88, '2.2': 85, '3.1': 77, '4.3': 79 } }
   ];
   var colores = { ok: ['#166534', '#DCFCE7', 'Sobre umbral'], warn: ['#B45309', '#FEF3C7', 'Bajo umbral'], crit: ['#B91C1C', '#FEE2E2', 'Crítico'] };
+  var NOMBRES = { '2.1': 'Inducción Corporativa', '2.2': 'Orientación al Puesto', '3.1': 'RCP / IAAS', '4.3': 'Vacunación Hepatitis B' };
   var grid = document.getElementById('grid-unidades');
   unidades.forEach(function (u) {
     var c = colores[u.estado];

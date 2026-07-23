@@ -510,14 +510,14 @@ function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.set
   var titulo=null,h1s=document.querySelectorAll('h1,h2,h3');
   for(var i=0;i<h1s.length;i++){if(h1s[i].textContent.indexOf('RCP')>=0){titulo=h1s[i];break;}}
   if(titulo){
-    titulo.textContent=sel+' \u00b7 '+PUNTOS[sel].nombre;
+    titulo.textContent=PUNTOS[sel].nombre;
     var card=titulo.closest('div.bg-white,div[class*="rounded"]');
     var tabs=document.createElement('div');
     tabs.className='flex flex-wrap gap-2 mb-4';
     Object.keys(PUNTOS).forEach(function(k){
       var a=document.createElement('a');
       a.href='punto.html?p='+k;
-      a.textContent=k+' '+PUNTOS[k].nombre;
+      a.textContent=PUNTOS[k].nombre;
       a.className=(k===sel)?
         'px-3 py-1.5 rounded-full text-[12px] font-bold bg-[#5B1763] text-white':
         'px-3 py-1.5 rounded-full text-[12px] font-semibold bg-white border border-[#c4c6cf] text-[#44474e] hover:border-secondary hover:text-secondary';
