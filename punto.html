@@ -18,7 +18,7 @@
                         "error": "#ba1a1a",
                         "on-error": "#ffffff",
                         "on-tertiary-container": "#d67900",
-                        "surface-bright": "#f7f9fc",
+                        "surface-bright": "#FAF8FB",
                         "on-primary": "#ffffff",
                         "surface-container": "#eceef1",
                         "on-secondary-fixed": "#001c3b",
@@ -33,7 +33,7 @@
                         "surface-variant": "#e0e3e6",
                         "surface-dim": "#d8dadd",
                         "secondary-fixed-dim": "#a7c8ff",
-                        "background": "#f7f9fc",
+                        "background": "#FAF8FB",
                         "on-secondary-fixed-variant": "#004787",
                         "on-primary-fixed": "#021b3c",
                         "primary": "#5B1763",
@@ -45,7 +45,7 @@
                         "surface-tint": "#4a5f83",
                         "secondary-container": "#76adfd",
                         "on-tertiary": "#ffffff",
-                        "on-surface-variant": "#44474e",
+                        "on-surface-variant": "#5A5568",
                         "surface-container-highest": "#e0e3e6",
                         "secondary": "#307FE2",
                         "surface-container-lowest": "#ffffff",
@@ -55,7 +55,7 @@
                         "primary-fixed": "#d6e3ff",
                         "tertiary-fixed-dim": "#ffb778",
                         "on-secondary": "#ffffff",
-                        "surface": "#f7f9fc",
+                        "surface": "#FAF8FB",
                         "primary-fixed-dim": "#b2c7f0",
                         "inverse-primary": "#b2c7f0",
                         "inverse-on-surface": "#eff1f4",
@@ -106,7 +106,7 @@
             vertical-align: middle;
         }
         body {
-            background-color: #f7f9fc;
+            background-color: #FAF8FB;
             color: #191c1e;
             -webkit-font-smoothing: antialiased;
         }
@@ -148,6 +148,8 @@
   @keyframes acr-progress { from{width:0%;} }
   .acr-progress-anim { animation: acr-progress 1.1s ease-out both; }
   @keyframes acr-toast-in { from{opacity:0;transform:translateY(10px) scale(.97);} to{opacity:1;transform:translateY(0) scale(1);} }
+  .acr-mini-pulse{stroke-dasharray:40;stroke-dashoffset:0;animation:acr-mini-run 2.6s linear infinite;}
+  @keyframes acr-mini-run{0%{stroke-dashoffset:40;}70%{stroke-dashoffset:0;}100%{stroke-dashoffset:0;}}
   @keyframes acr-fly { 0%{transform:translate(0,0) scale(1);opacity:1;} 70%{opacity:1;} 100%{transform:translate(var(--fx,60px),var(--fy,-40px)) scale(.3);opacity:0;} }
 </style></head>
 <body class="font-body-md text-body-md flex min-h-screen">
@@ -520,7 +522,7 @@ function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.set
       a.textContent=PUNTOS[k].nombre;
       a.className=(k===sel)?
         'px-3 py-1.5 rounded-full text-[12px] font-bold bg-[#5B1763] text-white':
-        'px-3 py-1.5 rounded-full text-[12px] font-semibold bg-white border border-[#c4c6cf] text-[#44474e] hover:border-secondary hover:text-secondary';
+        'px-3 py-1.5 rounded-full text-[12px] font-semibold bg-white border border-[#c4c6cf] text-[#5A5568] hover:border-secondary hover:text-secondary';
       tabs.appendChild(a);
     });
     if(card&&card.parentNode){card.parentNode.insertBefore(tabs,card);}

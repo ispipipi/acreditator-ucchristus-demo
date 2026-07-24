@@ -17,7 +17,7 @@
                         "error": "#ba1a1a",
                         "on-error": "#ffffff",
                         "on-tertiary-container": "#d67900",
-                        "surface-bright": "#f7f9fc",
+                        "surface-bright": "#FAF8FB",
                         "on-primary": "#ffffff",
                         "surface-container": "#eceef1",
                         "on-secondary-fixed": "#001c3b",
@@ -32,7 +32,7 @@
                         "surface-variant": "#e0e3e6",
                         "surface-dim": "#d8dadd",
                         "secondary-fixed-dim": "#a7c8ff",
-                        "background": "#f7f9fc",
+                        "background": "#FAF8FB",
                         "on-secondary-fixed-variant": "#004787",
                         "on-primary-fixed": "#021b3c",
                         "primary": "#5B1763",
@@ -44,7 +44,7 @@
                         "surface-tint": "#4a5f83",
                         "secondary-container": "#76adfd",
                         "on-tertiary": "#ffffff",
-                        "on-surface-variant": "#44474e",
+                        "on-surface-variant": "#5A5568",
                         "surface-container-highest": "#e0e3e6",
                         "secondary": "#307FE2",
                         "surface-container-lowest": "#ffffff",
@@ -54,7 +54,7 @@
                         "primary-fixed": "#d6e3ff",
                         "tertiary-fixed-dim": "#ffb778",
                         "on-secondary": "#ffffff",
-                        "surface": "#f7f9fc",
+                        "surface": "#FAF8FB",
                         "primary-fixed-dim": "#b2c7f0",
                         "inverse-primary": "#b2c7f0",
                         "inverse-on-surface": "#eff1f4",
@@ -105,7 +105,7 @@
             vertical-align: middle;
         }
         body {
-            background-color: #f7f9fc;
+            background-color: #FAF8FB;
             color: #191c1e;
             -webkit-font-smoothing: antialiased;
         }
@@ -147,18 +147,20 @@
   @keyframes acr-progress { from{width:0%;} }
   .acr-progress-anim { animation: acr-progress 1.1s ease-out both; }
   @keyframes acr-toast-in { from{opacity:0;transform:translateY(10px) scale(.97);} to{opacity:1;transform:translateY(0) scale(1);} }
+  .acr-mini-pulse{stroke-dasharray:40;stroke-dashoffset:0;animation:acr-mini-run 2.6s linear infinite;}
+  @keyframes acr-mini-run{0%{stroke-dashoffset:40;}70%{stroke-dashoffset:0;}100%{stroke-dashoffset:0;}}
   @keyframes acr-fly { 0%{transform:translate(0,0) scale(1);opacity:1;} 70%{opacity:1;} 100%{transform:translate(var(--fx,60px),var(--fy,-40px)) scale(.3);opacity:0;} }
-</style></head><body class="bg-[#F4F6F9] font-[Inter] text-[#191c1e]"><div class="flex min-h-screen"><aside class="w-[264px] h-screen sticky top-0 left-0 flex flex-col z-50 shrink-0 bg-gradient-to-b from-[#5B1763] to-[#3D0F45] border-r border-white/5"><div class="px-6 pt-8 pb-6"><img alt="Red de Salud UC CHRISTUS" class="h-6 w-auto object-contain mb-4" src="assets/logo-ucchristus-blanco.png"/><div class="flex items-center gap-2 pt-4 border-t border-white/10"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span><span class="text-[15px] font-bold tracking-tight text-white">Acreditator</span></div><p class="text-[10px] uppercase tracking-[0.14em] text-white/40 font-semibold mt-1">Plataforma de Acreditación</p></div><nav class="flex-1 overflow-y-auto px-3"><ul class="space-y-0.5"><li data-roles="admin,encargado,auditor"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-white/[0.08] text-white font-semibold ring-1 ring-white/10 transition-all duration-200" href="panel.html"><span class="w-1 h-5 rounded-full bg-secondary -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="text-[14px]">Panel</span></a></li><li data-roles="admin,encargado,auditor"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="punto.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="text-[14px]">Puntos de acreditación</span></a></li><li data-roles="admin,encargado"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="dotacion.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">groups</span><span class="text-[14px]">Dotación</span></a></li><li data-roles="admin,encargado"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="sincronizacion.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">sync</span><span class="text-[14px]">Sincronización</span></a></li><li data-roles="admin,encargado"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="alertas.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">notifications</span><span class="text-[14px]">Alertas</span></a></li><li data-roles="admin,encargado"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="reportes.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">assessment</span><span class="text-[14px]">Reportes</span></a></li><li data-roles="admin"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="unidades.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">corporate_fare</span><span class="text-[14px]">Unidades</span></a></li><li data-roles="jefatura"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="jefatura.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">medical_services</span><span class="text-[14px]">Mi servicio</span></a></li></ul></nav><div class="mt-auto px-3 py-4 border-t border-white/10 space-y-0.5"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="manual.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">menu_book</span><span class="text-[13px]">Manual de usuario</span></a><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-colors" href="index.html" data-logout="1"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">logout</span><span class="text-[13px]">Cerrar sesión</span></a></div></aside><div class="flex-1 min-w-0">
-<header class="sticky top-0 z-40 bg-white border-b border-[#E5E7EB] px-8 py-4 flex items-center justify-between">
+</style></head><body class="bg-[#FAF8FB] font-[Inter] text-[#191c1e]"><div class="flex min-h-screen"><aside class="w-[264px] h-screen sticky top-0 left-0 flex flex-col z-50 shrink-0 bg-gradient-to-b from-[#5B1763] to-[#3D0F45] border-r border-white/5"><div class="px-6 pt-8 pb-6"><img alt="Red de Salud UC CHRISTUS" class="h-6 w-auto object-contain mb-4" src="assets/logo-ucchristus-blanco.png"/><div class="flex items-center gap-2 pt-4 border-t border-white/10"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span><span class="text-[15px] font-bold tracking-tight text-white">Acreditator</span></div><p class="text-[10px] uppercase tracking-[0.14em] text-white/40 font-semibold mt-1">Plataforma de Acreditación</p></div><nav class="flex-1 overflow-y-auto px-3"><ul class="space-y-0.5"><li data-roles="admin,encargado,auditor"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-white/[0.08] text-white font-semibold ring-1 ring-white/10 transition-all duration-200" href="panel.html"><span class="w-1 h-5 rounded-full bg-secondary -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="text-[14px]">Panel</span></a></li><li data-roles="admin,encargado,auditor"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="punto.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="text-[14px]">Puntos de acreditación</span></a></li><li data-roles="admin,encargado"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="dotacion.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">groups</span><span class="text-[14px]">Dotación</span></a></li><li data-roles="admin,encargado"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="sincronizacion.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">sync</span><span class="text-[14px]">Sincronización</span></a></li><li data-roles="admin,encargado"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="alertas.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">notifications</span><span class="text-[14px]">Alertas</span></a></li><li data-roles="admin,encargado"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="reportes.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">assessment</span><span class="text-[14px]">Reportes</span></a></li><li data-roles="admin"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="unidades.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">corporate_fare</span><span class="text-[14px]">Unidades</span></a></li><li data-roles="jefatura"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="jefatura.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">medical_services</span><span class="text-[14px]">Mi servicio</span></a></li></ul></nav><div class="mt-auto px-3 py-4 border-t border-white/10 space-y-0.5"><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-all duration-200" href="manual.html"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">menu_book</span><span class="text-[13px]">Manual de usuario</span></a><a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-colors" href="index.html" data-logout="1"><span class="w-1 h-5 rounded-full bg-transparent -ml-1 mr-1"></span><span class="material-symbols-outlined text-[20px]">logout</span><span class="text-[13px]">Cerrar sesión</span></a></div></aside><div class="flex-1 min-w-0">
+<header class="sticky top-0 z-40 bg-white border-b border-[#ECE0EF] px-8 py-4 flex items-center justify-between">
   <div>
     <h2 class="text-headline-md font-bold text-[#191c1e]">Panel de control de acreditación</h2>
-    <p class="text-body-sm text-[#44474e]">Estado consolidado de los 4 puntos · Hospital Clínico</p>
+    <p class="text-body-sm text-[#5A5568]">Estado consolidado de los 4 puntos · Hospital Clínico</p>
   </div>
   <div class="flex items-center gap-4">
-    <span class="material-symbols-outlined text-[#44474e]">notifications</span>
-    <div class="text-right border-l border-[#E5E7EB] pl-4">
+    <span class="material-symbols-outlined text-[#5A5568]">notifications</span>
+    <div class="text-right border-l border-[#ECE0EF] pl-4">
       <p class="text-body-md font-semibold text-[#191c1e]" data-user-name="1">Usuario</p>
-      <p class="text-[11px] font-semibold tracking-wider text-[#44474e]" data-user-role="1">ROL</p>
+      <p class="text-[11px] font-semibold tracking-wider text-[#5A5568]" data-user-role="1">ROL</p>
     </div>
   </div>
 </header><main class="p-8 max-w-[1440px] relative">
@@ -171,7 +173,7 @@
     <span class="material-symbols-outlined text-[#B45309]">campaign</span>
   </div>
   <div class="flex-1 pt-0.5">
-    <p class="font-semibold text-[#191c1e]">Acreditación programada: octubre 2026 <span class="text-[#8A93A3] font-normal">· quedan 11 semanas</span></p>
+    <p class="font-semibold text-[#191c1e]">Acreditación programada: octubre 2026 <span class="text-[#8D8398] font-normal">· quedan 11 semanas</span></p>
     <p class="text-body-sm text-[#5A6472] mt-0.5">2 de 4 puntos están bajo su umbral institucional. Punto crítico: <span class="font-semibold text-[#B91C1C]">RCP e IAAS</span> (78% vs meta 85%).</p>
   </div>
   <a class="shrink-0 bg-secondary text-white font-semibold text-body-sm px-5 py-2.5 rounded-full hover:bg-[#2566BD] shadow-[0_4px_14px_rgba(48,127,226,.35)]" href="punto.html?p=3.1" data-accion="1">Revisar punto crítico</a>
@@ -179,55 +181,55 @@
 
 <!-- Resumen ejecutivo: 3 chips con anillo -->
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-  <div class="acr-in bg-white border border-[#E5E7EB] rounded-2xl p-5 flex items-center gap-4" style="animation-delay:.05s">
+  <div class="acr-in bg-white border border-[#ECE0EF] rounded-2xl p-5 flex items-center gap-4" style="animation-delay:.05s">
     <div class="ring-slot shrink-0" data-percent="85" data-color="#5B1763" data-size="64" data-stroke="6"></div>
-    <div><p class="text-label-md uppercase tracking-wider text-[#8A93A3] font-semibold">Cumplimiento global</p>
+    <div><p class="text-label-md uppercase tracking-wider text-[#8D8398] font-semibold">Cumplimiento global</p>
       <p class="text-[26px] font-extrabold leading-none mt-1" style="color:#5B1763"><span class="acr-count" data-target="85">0</span>%</p>
-      <p class="text-[12px] text-[#8A93A3] mt-1">Hospital Clínico · 4 puntos</p></div>
+      <p class="text-[12px] text-[#8D8398] mt-1">Hospital Clínico · 4 puntos</p></div>
   </div>
-  <div class="acr-in bg-white border border-[#E5E7EB] rounded-2xl p-5 flex items-center gap-4" style="animation-delay:.12s">
+  <div class="acr-in bg-white border border-[#ECE0EF] rounded-2xl p-5 flex items-center gap-4" style="animation-delay:.12s">
     <div class="shrink-0 w-16 h-16 rounded-full flex items-center justify-center" style="background:#FEE2E2">
       <span class="material-symbols-outlined text-[#B91C1C] text-[28px]">priority_high</span></div>
-    <div><p class="text-label-md uppercase tracking-wider text-[#8A93A3] font-semibold">Puntos críticos</p>
+    <div><p class="text-label-md uppercase tracking-wider text-[#8D8398] font-semibold">Puntos críticos</p>
       <p class="text-[26px] font-extrabold leading-none mt-1 text-[#B91C1C]"><span class="acr-count" data-target="2">0</span> de 4</p>
-      <p class="text-[12px] text-[#8A93A3] mt-1">RCP/IAAS y Vacunación bajo meta</p></div>
+      <p class="text-[12px] text-[#8D8398] mt-1">RCP/IAAS y Vacunación bajo meta</p></div>
   </div>
-  <div class="acr-in bg-white border border-[#E5E7EB] rounded-2xl p-5 flex items-center gap-4" style="animation-delay:.19s">
+  <div class="acr-in bg-white border border-[#ECE0EF] rounded-2xl p-5 flex items-center gap-4" style="animation-delay:.19s">
     <div class="shrink-0 w-16 h-16 rounded-full flex items-center justify-center" style="background:#EEF4FB">
       <span class="material-symbols-outlined text-secondary text-[28px]">event_available</span></div>
-    <div><p class="text-label-md uppercase tracking-wider text-[#8A93A3] font-semibold">Próxima acreditación</p>
+    <div><p class="text-label-md uppercase tracking-wider text-[#8D8398] font-semibold">Próxima acreditación</p>
       <p class="text-[26px] font-extrabold leading-none mt-1 text-secondary"><span class="acr-count" data-target="11">0</span> sem.</p>
-      <p class="text-[12px] text-[#8A93A3] mt-1">Octubre 2026 · corte previo 15 ago</p></div>
+      <p class="text-[12px] text-[#8D8398] mt-1">Octubre 2026 · corte previo 15 ago</p></div>
   </div>
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-6">
 
-<div class="acr-in bg-white border border-[#E5E7EB] rounded-2xl p-6 flex items-center gap-5 hover:shadow-[0_8px_28px_rgba(91,23,99,.09)]" style="animation-delay:.24s">
+<div class="acr-in bg-white border border-[#ECE0EF] rounded-2xl p-6 flex items-center gap-5 hover:shadow-[0_8px_28px_rgba(91,23,99,.09)]" style="animation-delay:.24s">
   <div class="ring-slot shrink-0" data-percent="91" data-color="#166534" data-size="88" data-stroke="8"></div>
   <div class="flex-1 min-w-0">
     <div class="flex items-center justify-between gap-2">
-      <p class="text-label-md uppercase tracking-wider text-[#8A93A3] font-semibold">Inducción Corporativa</p>
+      <p class="text-label-md uppercase tracking-wider text-[#8D8398] font-semibold">Inducción Corporativa</p>
       <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-full shrink-0" style="color:#166534;background:#DCFCE7">
         <span class="material-symbols-outlined text-[14px]">check_circle</span>Sobre umbral</span>
     </div>
     <p class="text-body-sm text-[#5A6472] mt-1">meta 85% · +1.2% vs mes anterior</p>
-    <p class="text-body-sm text-[#8A93A3] mt-1">1.310 de 1.440 funcionarios vigentes.</p>
+    <p class="text-body-sm text-[#8D8398] mt-1">1.310 de 1.440 funcionarios vigentes.</p>
     <a class="text-body-sm font-semibold text-secondary hover:underline inline-flex items-center gap-1 mt-2" href="punto.html?p=2.1">
       Revisar punto <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
   </div>
 </div>
 
-<div class="acr-in bg-white border border-[#E5E7EB] rounded-2xl p-6 flex items-center gap-5 hover:shadow-[0_8px_28px_rgba(91,23,99,.09)]" style="animation-delay:.29s">
+<div class="acr-in bg-white border border-[#ECE0EF] rounded-2xl p-6 flex items-center gap-5 hover:shadow-[0_8px_28px_rgba(91,23,99,.09)]" style="animation-delay:.29s">
   <div class="ring-slot shrink-0" data-percent="87" data-color="#166534" data-size="88" data-stroke="8"></div>
   <div class="flex-1 min-w-0">
     <div class="flex items-center justify-between gap-2">
-      <p class="text-label-md uppercase tracking-wider text-[#8A93A3] font-semibold">Orientación al Puesto</p>
+      <p class="text-label-md uppercase tracking-wider text-[#8D8398] font-semibold">Orientación al Puesto</p>
       <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-full shrink-0" style="color:#166534;background:#DCFCE7">
         <span class="material-symbols-outlined text-[14px]">check_circle</span>Sobre umbral</span>
     </div>
     <p class="text-body-sm text-[#5A6472] mt-1">meta 85% · +0.5% vs mes anterior</p>
-    <p class="text-body-sm text-[#8A93A3] mt-1">312 de 359 ingresos con orientación finalizada.</p>
+    <p class="text-body-sm text-[#8D8398] mt-1">312 de 359 ingresos con orientación finalizada.</p>
     <a class="text-body-sm font-semibold text-secondary hover:underline inline-flex items-center gap-1 mt-2" href="punto.html?p=2.2">
       Revisar punto <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
   </div>
@@ -237,12 +239,12 @@
   <div class="ring-slot shrink-0" data-percent="78" data-color="#B91C1C" data-size="88" data-stroke="8"></div>
   <div class="flex-1 min-w-0">
     <div class="flex items-center justify-between gap-2">
-      <p class="text-label-md uppercase tracking-wider text-[#8A93A3] font-semibold">RCP e IAAS</p>
+      <p class="text-label-md uppercase tracking-wider text-[#8D8398] font-semibold">RCP e IAAS</p>
       <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-full shrink-0" style="color:#B91C1C;background:#FEE2E2">
         <span class="material-symbols-outlined text-[14px]">error</span>Crítico</span>
     </div>
     <p class="text-body-sm text-[#5A6472] mt-1">meta 85% · -2.4% vs mes anterior</p>
-    <p class="text-body-sm text-[#8A93A3] mt-1">128 personas con renovación vencida o programada sin curso al día.</p>
+    <p class="text-body-sm text-[#8D8398] mt-1">128 personas con renovación vencida o programada sin curso al día.</p>
     <a class="text-body-sm font-semibold text-secondary hover:underline inline-flex items-center gap-1 mt-2" href="punto.html?p=3.1">
       Revisar punto <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
   </div>
@@ -252,12 +254,12 @@
   <div class="ring-slot shrink-0" data-percent="82" data-color="#B45309" data-size="88" data-stroke="8"></div>
   <div class="flex-1 min-w-0">
     <div class="flex items-center justify-between gap-2">
-      <p class="text-label-md uppercase tracking-wider text-[#8A93A3] font-semibold">Vacunación Hepatitis B</p>
+      <p class="text-label-md uppercase tracking-wider text-[#8D8398] font-semibold">Vacunación Hepatitis B</p>
       <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-full shrink-0" style="color:#B45309;background:#FEF3C7">
         <span class="material-symbols-outlined text-[14px]">warning</span>Bajo umbral</span>
     </div>
     <p class="text-body-sm text-[#5A6472] mt-1">meta 85% · +0.8% vs mes anterior</p>
-    <p class="text-body-sm text-[#8A93A3] mt-1">96 funcionarios de Riesgo I sin esquema completo o sin respaldo.</p>
+    <p class="text-body-sm text-[#8D8398] mt-1">96 funcionarios de Riesgo I sin esquema completo o sin respaldo.</p>
     <a class="text-body-sm font-semibold text-secondary hover:underline inline-flex items-center gap-1 mt-2" href="punto.html?p=4.3">
       Revisar punto <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
   </div>
@@ -265,65 +267,66 @@
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-  <div class="acr-in lg:col-span-2 bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden" style="animation-delay:.44s">
-    <div class="px-6 py-4 border-b border-[#F1F2F4] flex items-center justify-between">
+  <div class="acr-in lg:col-span-2 bg-white border border-[#ECE0EF] rounded-2xl overflow-hidden" style="animation-delay:.44s">
+    <div class="px-6 py-4 border-b border-[#F3ECF4] flex items-center justify-between">
       <h3 class="font-bold">Servicios que requieren atención</h3>
       <a class="text-body-sm font-semibold text-secondary hover:underline" href="punto.html">Ver todos</a>
     </div>
     <table class="w-full text-body-sm">
-      <thead><tr class="text-left text-label-md uppercase tracking-wider text-[#8A93A3] bg-[#FAFAFB]">
+      <thead><tr class="text-left text-label-md uppercase tracking-wider text-[#8D8398] bg-[#FBF7FC]">
         <th class="px-6 py-3 font-semibold">Servicio</th><th class="px-4 py-3 font-semibold">Punto</th>
         <th class="px-4 py-3 font-semibold w-[160px]">Cumplimiento</th><th class="px-4 py-3 font-semibold">Pendientes</th>
         <th class="px-4 py-3 font-semibold text-right">Acción</th></tr></thead>
       <tbody id="tabla-servicios">
-        <tr class="border-t border-[#F1F2F4]">
+        <tr class="border-t border-[#F3ECF4]">
           <td class="px-6 py-3 font-medium flex items-center gap-2.5">
             <span class="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0" style="background:#FEE2E2;color:#B91C1C">UC</span>UCI Cardiovascular</td>
           <td class="px-4 py-3 text-[#5A6472]">RCP/IAAS</td>
           <td class="px-4 py-3"><div class="flex items-center gap-2"><span class="font-bold text-[#B91C1C] w-9">64%</span>
-            <span class="flex-1 h-1.5 bg-[#F1F2F4] rounded-full overflow-hidden"><span class="acr-bar block h-full rounded-full" style="background:#B91C1C" data-width="64"></span></span></div></td>
+            <span class="flex-1 h-1.5 bg-[#F3ECF4] rounded-full overflow-hidden"><span class="acr-bar block h-full rounded-full" style="background:#B91C1C" data-width="64"></span></span></div></td>
           <td class="px-4 py-3 text-[#5A6472]">14 personas</td>
           <td class="px-4 py-3 text-right"><button class="text-secondary font-semibold hover:underline" data-toast="Recordatorio enviado a jefatura de UCI Cardiovascular" data-accion="1">Enviar recordatorio</button></td></tr>
-        <tr class="border-t border-[#F1F2F4]">
+        <tr class="border-t border-[#F3ECF4]">
           <td class="px-6 py-3 font-medium flex items-center gap-2.5">
             <span class="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0" style="background:#FEE2E2;color:#B91C1C">PC</span>Pabellón Central</td>
           <td class="px-4 py-3 text-[#5A6472]">Vacunación</td>
           <td class="px-4 py-3"><div class="flex items-center gap-2"><span class="font-bold text-[#B91C1C] w-9">71%</span>
-            <span class="flex-1 h-1.5 bg-[#F1F2F4] rounded-full overflow-hidden"><span class="acr-bar block h-full rounded-full" style="background:#B91C1C" data-width="71"></span></span></div></td>
+            <span class="flex-1 h-1.5 bg-[#F3ECF4] rounded-full overflow-hidden"><span class="acr-bar block h-full rounded-full" style="background:#B91C1C" data-width="71"></span></span></div></td>
           <td class="px-4 py-3 text-[#5A6472]">11 personas</td>
           <td class="px-4 py-3 text-right"><button class="text-secondary font-semibold hover:underline" data-toast="Recordatorio enviado a jefatura de Pabellón Central" data-accion="1">Enviar recordatorio</button></td></tr>
-        <tr class="border-t border-[#F1F2F4]">
+        <tr class="border-t border-[#F3ECF4]">
           <td class="px-6 py-3 font-medium flex items-center gap-2.5">
             <span class="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0" style="background:#FEF3C7;color:#B45309">UA</span>Urgencia Adulto</td>
           <td class="px-4 py-3 text-[#5A6472]">RCP/IAAS</td>
           <td class="px-4 py-3"><div class="flex items-center gap-2"><span class="font-bold text-[#B45309] w-9">79%</span>
-            <span class="flex-1 h-1.5 bg-[#F1F2F4] rounded-full overflow-hidden"><span class="acr-bar block h-full rounded-full" style="background:#B45309" data-width="79"></span></span></div></td>
+            <span class="flex-1 h-1.5 bg-[#F3ECF4] rounded-full overflow-hidden"><span class="acr-bar block h-full rounded-full" style="background:#B45309" data-width="79"></span></span></div></td>
           <td class="px-4 py-3 text-[#5A6472]">9 personas</td>
           <td class="px-4 py-3 text-right"><button class="text-secondary font-semibold hover:underline" data-toast="Recordatorio enviado a jefatura de Urgencia Adulto" data-accion="1">Enviar recordatorio</button></td></tr>
-        <tr class="border-t border-[#F1F2F4]">
+        <tr class="border-t border-[#F3ECF4]">
           <td class="px-6 py-3 font-medium flex items-center gap-2.5">
             <span class="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0" style="background:#FEF3C7;color:#B45309">LC</span>Laboratorio Clínico</td>
           <td class="px-4 py-3 text-[#5A6472]">Inducción</td>
           <td class="px-4 py-3"><div class="flex items-center gap-2"><span class="font-bold text-[#B45309] w-9">81%</span>
-            <span class="flex-1 h-1.5 bg-[#F1F2F4] rounded-full overflow-hidden"><span class="acr-bar block h-full rounded-full" style="background:#B45309" data-width="81"></span></span></div></td>
+            <span class="flex-1 h-1.5 bg-[#F3ECF4] rounded-full overflow-hidden"><span class="acr-bar block h-full rounded-full" style="background:#B45309" data-width="81"></span></span></div></td>
           <td class="px-4 py-3 text-[#5A6472]">6 personas</td>
           <td class="px-4 py-3 text-right"><button class="text-secondary font-semibold hover:underline" data-toast="Recordatorio enviado a jefatura de Laboratorio Clínico" data-accion="1">Enviar recordatorio</button></td></tr>
       </tbody>
     </table>
   </div>
   <div class="space-y-5">
-    <div class="acr-in bg-white border border-[#E5E7EB] rounded-2xl p-6" style="animation-delay:.49s">
+    <div class="acr-in bg-white border border-[#ECE0EF] rounded-2xl p-6" style="animation-delay:.49s">
       <div class="flex items-center gap-2 mb-3">
         <span class="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style="background:#EEF4FB">
           <span class="material-symbols-outlined text-secondary text-[18px]">sync</span></span>
         <h3 class="font-bold">Sincronización Academia</h3>
       </div>
-      <div class="flex items-center gap-2 mb-2"><span class="w-2.5 h-2.5 rounded-full bg-[#166534] acr-pulse"></span>
+      <div class="flex items-center gap-2.5 mb-2">
+        <svg width="30" height="14" viewBox="0 0 30 14" class="shrink-0"><path d="M0,7 L9,7 L11,2 L14,12 L16,7 L30,7" fill="none" stroke="#166534" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="acr-mini-pulse"/></svg>
         <span class="text-body-sm font-semibold text-[#166534]">Conectada · hoy 09:00 AM</span></div>
       <p class="text-body-sm text-[#5A6472] mb-4">247 registros actualizados en la última sincronización automática.</p>
       <a class="text-body-sm font-semibold text-secondary hover:underline" href="sincronizacion.html">Ver log de ingesta</a>
     </div>
-    <div class="acr-in bg-white border border-[#E5E7EB] rounded-2xl p-6" style="animation-delay:.54s">
+    <div class="acr-in bg-white border border-[#ECE0EF] rounded-2xl p-6" style="animation-delay:.54s">
       <div class="flex items-center gap-2 mb-3">
         <span class="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style="background:#F3E8F4">
           <span class="material-symbols-outlined text-[18px]" style="color:#5B1763">flag</span></span>
