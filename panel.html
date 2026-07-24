@@ -161,127 +161,219 @@
       <p class="text-[11px] font-semibold tracking-wider text-[#44474e]" data-user-role="1">ROL</p>
     </div>
   </div>
-</header><main class="p-8 max-w-[1440px]">
-<div class="flex items-start gap-4 bg-white border-l-4 border-[#E8850C] border border-[#FDE9D2] rounded-lg p-5 mb-8">
-  <span class="material-symbols-outlined text-[#E8850C]">campaign</span>
-  <div class="flex-1">
-    <p class="font-semibold text-[#191c1e]">Acreditación programada: octubre 2026 · quedan 11 semanas</p>
-    <p class="text-body-sm text-[#44474e]">2 de 4 puntos están bajo su umbral institucional. Punto crítico: RCP e IAAS (78% vs meta 85%).</p>
-  </div>
-  <a class="shrink-0 bg-secondary text-white font-semibold text-body-sm px-4 py-2.5 rounded hover:bg-[#2566BD]" href="punto.html?p=3.1" data-accion="1">Revisar punto crítico</a>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+</header><main class="p-8 max-w-[1440px] relative">
+<div class="pointer-events-none absolute -top-10 right-0 w-[520px] h-[380px] opacity-[0.05] blur-3xl rounded-full"
+     style="background:radial-gradient(circle,#671E75 0%,#307FE2 60%,transparent 75%)"></div>
 
-<div class="bg-white border border-[#E5E7EB] rounded-lg p-6 flex flex-col gap-3">
-  <div class="flex items-center justify-between">
-    <p class="text-label-md uppercase tracking-wider text-[#44474e] font-semibold">Inducción Corporativa</p>
-    <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-full" style="color:#166534;background:#DCFCE7">
-      <span class="material-symbols-outlined text-[14px]">check_circle</span>Sobre umbral</span>
+<!-- Banner de acreditación -->
+<div class="acr-in relative flex items-start gap-4 bg-white border border-[#F0E4F2] rounded-2xl p-5 mb-6 shadow-[0_2px_16px_rgba(91,23,99,.06)]">
+  <div class="shrink-0 w-11 h-11 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,#FDF0E4,#FDE9D2)">
+    <span class="material-symbols-outlined text-[#B45309]">campaign</span>
   </div>
-  <div class="flex items-end gap-3">
-    <span class="text-[40px] leading-none font-extrabold" style="color:#166534">91%</span>
-    <span class="text-body-sm text-[#44474e] pb-1">meta 85% · +1.2% vs mes anterior</span>
+  <div class="flex-1 pt-0.5">
+    <p class="font-semibold text-[#191c1e]">Acreditación programada: octubre 2026 <span class="text-[#8A93A3] font-normal">· quedan 11 semanas</span></p>
+    <p class="text-body-sm text-[#5A6472] mt-0.5">2 de 4 puntos están bajo su umbral institucional. Punto crítico: <span class="font-semibold text-[#B91C1C]">RCP e IAAS</span> (78% vs meta 85%).</p>
   </div>
-  <div class="w-full h-2 bg-[#ECEEF1] rounded-full overflow-hidden">
-    <div class="h-full rounded-full" style="width:91%;background:#166534"></div>
-  </div>
-  <p class="text-body-sm text-[#44474e]">1.310 de 1.440 funcionarios vigentes · vigencia 12 meses desde término del curso.</p>
-  <a class="text-body-sm font-semibold text-secondary hover:underline flex items-center gap-1" href="punto.html?p=2.1">
-    Revisar punto <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+  <a class="shrink-0 bg-secondary text-white font-semibold text-body-sm px-5 py-2.5 rounded-full hover:bg-[#2566BD] shadow-[0_4px_14px_rgba(48,127,226,.35)]" href="punto.html?p=3.1" data-accion="1">Revisar punto crítico</a>
 </div>
 
-<div class="bg-white border border-[#E5E7EB] rounded-lg p-6 flex flex-col gap-3">
-  <div class="flex items-center justify-between">
-    <p class="text-label-md uppercase tracking-wider text-[#44474e] font-semibold">Orientación al Puesto</p>
-    <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-full" style="color:#166534;background:#DCFCE7">
-      <span class="material-symbols-outlined text-[14px]">check_circle</span>Sobre umbral</span>
+<!-- Resumen ejecutivo: 3 chips con anillo -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+  <div class="acr-in bg-white border border-[#E5E7EB] rounded-2xl p-5 flex items-center gap-4" style="animation-delay:.05s">
+    <div class="ring-slot shrink-0" data-percent="85" data-color="#5B1763" data-size="64" data-stroke="6"></div>
+    <div><p class="text-label-md uppercase tracking-wider text-[#8A93A3] font-semibold">Cumplimiento global</p>
+      <p class="text-[26px] font-extrabold leading-none mt-1" style="color:#5B1763"><span class="acr-count" data-target="85">0</span>%</p>
+      <p class="text-[12px] text-[#8A93A3] mt-1">Hospital Clínico · 4 puntos</p></div>
   </div>
-  <div class="flex items-end gap-3">
-    <span class="text-[40px] leading-none font-extrabold" style="color:#166534">87%</span>
-    <span class="text-body-sm text-[#44474e] pb-1">meta 85% · +0.5% vs mes anterior</span>
+  <div class="acr-in bg-white border border-[#E5E7EB] rounded-2xl p-5 flex items-center gap-4" style="animation-delay:.12s">
+    <div class="shrink-0 w-16 h-16 rounded-full flex items-center justify-center" style="background:#FEE2E2">
+      <span class="material-symbols-outlined text-[#B91C1C] text-[28px]">priority_high</span></div>
+    <div><p class="text-label-md uppercase tracking-wider text-[#8A93A3] font-semibold">Puntos críticos</p>
+      <p class="text-[26px] font-extrabold leading-none mt-1 text-[#B91C1C]"><span class="acr-count" data-target="2">0</span> de 4</p>
+      <p class="text-[12px] text-[#8A93A3] mt-1">RCP/IAAS y Vacunación bajo meta</p></div>
   </div>
-  <div class="w-full h-2 bg-[#ECEEF1] rounded-full overflow-hidden">
-    <div class="h-full rounded-full" style="width:87%;background:#166534"></div>
+  <div class="acr-in bg-white border border-[#E5E7EB] rounded-2xl p-5 flex items-center gap-4" style="animation-delay:.19s">
+    <div class="shrink-0 w-16 h-16 rounded-full flex items-center justify-center" style="background:#EEF4FB">
+      <span class="material-symbols-outlined text-secondary text-[28px]">event_available</span></div>
+    <div><p class="text-label-md uppercase tracking-wider text-[#8A93A3] font-semibold">Próxima acreditación</p>
+      <p class="text-[26px] font-extrabold leading-none mt-1 text-secondary"><span class="acr-count" data-target="11">0</span> sem.</p>
+      <p class="text-[12px] text-[#8A93A3] mt-1">Octubre 2026 · corte previo 15 ago</p></div>
   </div>
-  <p class="text-body-sm text-[#44474e]">312 de 359 ingresos del período con orientación finalizada.</p>
-  <a class="text-body-sm font-semibold text-secondary hover:underline flex items-center gap-1" href="punto.html?p=2.2">
-    Revisar punto <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
 </div>
 
-<div class="bg-white border border-[#E5E7EB] rounded-lg p-6 flex flex-col gap-3">
-  <div class="flex items-center justify-between">
-    <p class="text-label-md uppercase tracking-wider text-[#44474e] font-semibold">RCP e IAAS</p>
-    <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-full" style="color:#B91C1C;background:#FEE2E2">
-      <span class="material-symbols-outlined text-[14px]">error</span>Crítico</span>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-6">
+
+<div class="acr-in bg-white border border-[#E5E7EB] rounded-2xl p-6 flex items-center gap-5 hover:shadow-[0_8px_28px_rgba(91,23,99,.09)]" style="animation-delay:.24s">
+  <div class="ring-slot shrink-0" data-percent="91" data-color="#166534" data-size="88" data-stroke="8"></div>
+  <div class="flex-1 min-w-0">
+    <div class="flex items-center justify-between gap-2">
+      <p class="text-label-md uppercase tracking-wider text-[#8A93A3] font-semibold">Inducción Corporativa</p>
+      <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-full shrink-0" style="color:#166534;background:#DCFCE7">
+        <span class="material-symbols-outlined text-[14px]">check_circle</span>Sobre umbral</span>
+    </div>
+    <p class="text-body-sm text-[#5A6472] mt-1">meta 85% · +1.2% vs mes anterior</p>
+    <p class="text-body-sm text-[#8A93A3] mt-1">1.310 de 1.440 funcionarios vigentes.</p>
+    <a class="text-body-sm font-semibold text-secondary hover:underline inline-flex items-center gap-1 mt-2" href="punto.html?p=2.1">
+      Revisar punto <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
   </div>
-  <div class="flex items-end gap-3">
-    <span class="text-[40px] leading-none font-extrabold" style="color:#B91C1C">78%</span>
-    <span class="text-body-sm text-[#44474e] pb-1">meta 85% · -2.4% vs mes anterior</span>
-  </div>
-  <div class="w-full h-2 bg-[#ECEEF1] rounded-full overflow-hidden">
-    <div class="h-full rounded-full" style="width:78%;background:#B91C1C"></div>
-  </div>
-  <p class="text-body-sm text-[#44474e]">128 personas con renovación vencida o programada para este año sin curso al día.</p>
-  <a class="text-body-sm font-semibold text-secondary hover:underline flex items-center gap-1" href="punto.html?p=3.1">
-    Revisar punto <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
 </div>
 
-<div class="bg-white border border-[#E5E7EB] rounded-lg p-6 flex flex-col gap-3">
-  <div class="flex items-center justify-between">
-    <p class="text-label-md uppercase tracking-wider text-[#44474e] font-semibold">Vacunación Hepatitis B</p>
-    <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-full" style="color:#B45309;background:#FEF3C7">
-      <span class="material-symbols-outlined text-[14px]">warning</span>Bajo umbral</span>
+<div class="acr-in bg-white border border-[#E5E7EB] rounded-2xl p-6 flex items-center gap-5 hover:shadow-[0_8px_28px_rgba(91,23,99,.09)]" style="animation-delay:.29s">
+  <div class="ring-slot shrink-0" data-percent="87" data-color="#166534" data-size="88" data-stroke="8"></div>
+  <div class="flex-1 min-w-0">
+    <div class="flex items-center justify-between gap-2">
+      <p class="text-label-md uppercase tracking-wider text-[#8A93A3] font-semibold">Orientación al Puesto</p>
+      <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-full shrink-0" style="color:#166534;background:#DCFCE7">
+        <span class="material-symbols-outlined text-[14px]">check_circle</span>Sobre umbral</span>
+    </div>
+    <p class="text-body-sm text-[#5A6472] mt-1">meta 85% · +0.5% vs mes anterior</p>
+    <p class="text-body-sm text-[#8A93A3] mt-1">312 de 359 ingresos con orientación finalizada.</p>
+    <a class="text-body-sm font-semibold text-secondary hover:underline inline-flex items-center gap-1 mt-2" href="punto.html?p=2.2">
+      Revisar punto <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
   </div>
-  <div class="flex items-end gap-3">
-    <span class="text-[40px] leading-none font-extrabold" style="color:#B45309">82%</span>
-    <span class="text-body-sm text-[#44474e] pb-1">meta 85% · +0.8% vs mes anterior</span>
+</div>
+
+<div class="acr-in bg-white border border-[#F7D6D6] rounded-2xl p-6 flex items-center gap-5 hover:shadow-[0_8px_28px_rgba(185,28,28,.10)]" style="animation-delay:.34s">
+  <div class="ring-slot shrink-0" data-percent="78" data-color="#B91C1C" data-size="88" data-stroke="8"></div>
+  <div class="flex-1 min-w-0">
+    <div class="flex items-center justify-between gap-2">
+      <p class="text-label-md uppercase tracking-wider text-[#8A93A3] font-semibold">RCP e IAAS</p>
+      <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-full shrink-0" style="color:#B91C1C;background:#FEE2E2">
+        <span class="material-symbols-outlined text-[14px]">error</span>Crítico</span>
+    </div>
+    <p class="text-body-sm text-[#5A6472] mt-1">meta 85% · -2.4% vs mes anterior</p>
+    <p class="text-body-sm text-[#8A93A3] mt-1">128 personas con renovación vencida o programada sin curso al día.</p>
+    <a class="text-body-sm font-semibold text-secondary hover:underline inline-flex items-center gap-1 mt-2" href="punto.html?p=3.1">
+      Revisar punto <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
   </div>
-  <div class="w-full h-2 bg-[#ECEEF1] rounded-full overflow-hidden">
-    <div class="h-full rounded-full" style="width:82%;background:#B45309"></div>
+</div>
+
+<div class="acr-in bg-white border border-[#FBE3C0] rounded-2xl p-6 flex items-center gap-5 hover:shadow-[0_8px_28px_rgba(180,83,9,.10)]" style="animation-delay:.39s">
+  <div class="ring-slot shrink-0" data-percent="82" data-color="#B45309" data-size="88" data-stroke="8"></div>
+  <div class="flex-1 min-w-0">
+    <div class="flex items-center justify-between gap-2">
+      <p class="text-label-md uppercase tracking-wider text-[#8A93A3] font-semibold">Vacunación Hepatitis B</p>
+      <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-full shrink-0" style="color:#B45309;background:#FEF3C7">
+        <span class="material-symbols-outlined text-[14px]">warning</span>Bajo umbral</span>
+    </div>
+    <p class="text-body-sm text-[#5A6472] mt-1">meta 85% · +0.8% vs mes anterior</p>
+    <p class="text-body-sm text-[#8A93A3] mt-1">96 funcionarios de Riesgo I sin esquema completo o sin respaldo.</p>
+    <a class="text-body-sm font-semibold text-secondary hover:underline inline-flex items-center gap-1 mt-2" href="punto.html?p=4.3">
+      Revisar punto <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
   </div>
-  <p class="text-body-sm text-[#44474e]">96 funcionarios de Riesgo I sin esquema completo o sin respaldo cargado.</p>
-  <a class="text-body-sm font-semibold text-secondary hover:underline flex items-center gap-1" href="punto.html?p=4.3">
-    Revisar punto <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
 </div>
 </div>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-  <div class="lg:col-span-2 bg-white border border-[#E5E7EB] rounded-lg">
-    <div class="px-6 py-4 border-b border-[#E5E7EB] flex items-center justify-between">
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+  <div class="acr-in lg:col-span-2 bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden" style="animation-delay:.44s">
+    <div class="px-6 py-4 border-b border-[#F1F2F4] flex items-center justify-between">
       <h3 class="font-bold">Servicios que requieren atención</h3>
       <a class="text-body-sm font-semibold text-secondary hover:underline" href="punto.html">Ver todos</a>
     </div>
     <table class="w-full text-body-sm">
-      <thead><tr class="text-left text-label-md uppercase tracking-wider text-[#44474e] bg-[#F8F9FB]">
+      <thead><tr class="text-left text-label-md uppercase tracking-wider text-[#8A93A3] bg-[#FAFAFB]">
         <th class="px-6 py-3 font-semibold">Servicio</th><th class="px-4 py-3 font-semibold">Punto</th>
-        <th class="px-4 py-3 font-semibold">Cumplimiento</th><th class="px-4 py-3 font-semibold">Pendientes</th>
+        <th class="px-4 py-3 font-semibold w-[160px]">Cumplimiento</th><th class="px-4 py-3 font-semibold">Pendientes</th>
         <th class="px-4 py-3 font-semibold text-right">Acción</th></tr></thead>
       <tbody id="tabla-servicios">
-        <tr class="border-t border-[#F1F2F4]"><td class="px-6 py-3 font-medium">UCI Cardiovascular</td><td class="px-4 py-3">RCP/IAAS</td><td class="px-4 py-3 font-bold text-[#B91C1C]">64%</td><td class="px-4 py-3">14 personas</td><td class="px-4 py-3 text-right"><button class="text-secondary font-semibold hover:underline" data-toast="Recordatorio enviado a jefatura de UCI Cardiovascular" data-accion="1">Enviar recordatorio</button></td></tr>
-        <tr class="border-t border-[#F1F2F4]"><td class="px-6 py-3 font-medium">Pabellón Central</td><td class="px-4 py-3">Vacunación</td><td class="px-4 py-3 font-bold text-[#B91C1C]">71%</td><td class="px-4 py-3">11 personas</td><td class="px-4 py-3 text-right"><button class="text-secondary font-semibold hover:underline" data-toast="Recordatorio enviado a jefatura de Pabellón Central" data-accion="1">Enviar recordatorio</button></td></tr>
-        <tr class="border-t border-[#F1F2F4]"><td class="px-6 py-3 font-medium">Urgencia Adulto</td><td class="px-4 py-3">RCP/IAAS</td><td class="px-4 py-3 font-bold text-[#B45309]">79%</td><td class="px-4 py-3">9 personas</td><td class="px-4 py-3 text-right"><button class="text-secondary font-semibold hover:underline" data-toast="Recordatorio enviado a jefatura de Urgencia Adulto" data-accion="1">Enviar recordatorio</button></td></tr>
-        <tr class="border-t border-[#F1F2F4]"><td class="px-6 py-3 font-medium">Laboratorio Clínico</td><td class="px-4 py-3">Inducción</td><td class="px-4 py-3 font-bold text-[#B45309]">81%</td><td class="px-4 py-3">6 personas</td><td class="px-4 py-3 text-right"><button class="text-secondary font-semibold hover:underline" data-toast="Recordatorio enviado a jefatura de Laboratorio Clínico" data-accion="1">Enviar recordatorio</button></td></tr>
+        <tr class="border-t border-[#F1F2F4]">
+          <td class="px-6 py-3 font-medium flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0" style="background:#FEE2E2;color:#B91C1C">UC</span>UCI Cardiovascular</td>
+          <td class="px-4 py-3 text-[#5A6472]">RCP/IAAS</td>
+          <td class="px-4 py-3"><div class="flex items-center gap-2"><span class="font-bold text-[#B91C1C] w-9">64%</span>
+            <span class="flex-1 h-1.5 bg-[#F1F2F4] rounded-full overflow-hidden"><span class="acr-bar block h-full rounded-full" style="background:#B91C1C" data-width="64"></span></span></div></td>
+          <td class="px-4 py-3 text-[#5A6472]">14 personas</td>
+          <td class="px-4 py-3 text-right"><button class="text-secondary font-semibold hover:underline" data-toast="Recordatorio enviado a jefatura de UCI Cardiovascular" data-accion="1">Enviar recordatorio</button></td></tr>
+        <tr class="border-t border-[#F1F2F4]">
+          <td class="px-6 py-3 font-medium flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0" style="background:#FEE2E2;color:#B91C1C">PC</span>Pabellón Central</td>
+          <td class="px-4 py-3 text-[#5A6472]">Vacunación</td>
+          <td class="px-4 py-3"><div class="flex items-center gap-2"><span class="font-bold text-[#B91C1C] w-9">71%</span>
+            <span class="flex-1 h-1.5 bg-[#F1F2F4] rounded-full overflow-hidden"><span class="acr-bar block h-full rounded-full" style="background:#B91C1C" data-width="71"></span></span></div></td>
+          <td class="px-4 py-3 text-[#5A6472]">11 personas</td>
+          <td class="px-4 py-3 text-right"><button class="text-secondary font-semibold hover:underline" data-toast="Recordatorio enviado a jefatura de Pabellón Central" data-accion="1">Enviar recordatorio</button></td></tr>
+        <tr class="border-t border-[#F1F2F4]">
+          <td class="px-6 py-3 font-medium flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0" style="background:#FEF3C7;color:#B45309">UA</span>Urgencia Adulto</td>
+          <td class="px-4 py-3 text-[#5A6472]">RCP/IAAS</td>
+          <td class="px-4 py-3"><div class="flex items-center gap-2"><span class="font-bold text-[#B45309] w-9">79%</span>
+            <span class="flex-1 h-1.5 bg-[#F1F2F4] rounded-full overflow-hidden"><span class="acr-bar block h-full rounded-full" style="background:#B45309" data-width="79"></span></span></div></td>
+          <td class="px-4 py-3 text-[#5A6472]">9 personas</td>
+          <td class="px-4 py-3 text-right"><button class="text-secondary font-semibold hover:underline" data-toast="Recordatorio enviado a jefatura de Urgencia Adulto" data-accion="1">Enviar recordatorio</button></td></tr>
+        <tr class="border-t border-[#F1F2F4]">
+          <td class="px-6 py-3 font-medium flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0" style="background:#FEF3C7;color:#B45309">LC</span>Laboratorio Clínico</td>
+          <td class="px-4 py-3 text-[#5A6472]">Inducción</td>
+          <td class="px-4 py-3"><div class="flex items-center gap-2"><span class="font-bold text-[#B45309] w-9">81%</span>
+            <span class="flex-1 h-1.5 bg-[#F1F2F4] rounded-full overflow-hidden"><span class="acr-bar block h-full rounded-full" style="background:#B45309" data-width="81"></span></span></div></td>
+          <td class="px-4 py-3 text-[#5A6472]">6 personas</td>
+          <td class="px-4 py-3 text-right"><button class="text-secondary font-semibold hover:underline" data-toast="Recordatorio enviado a jefatura de Laboratorio Clínico" data-accion="1">Enviar recordatorio</button></td></tr>
       </tbody>
     </table>
   </div>
-  <div class="space-y-6">
-    <div class="bg-white border border-[#E5E7EB] rounded-lg p-6">
-      <h3 class="font-bold mb-4">Sincronización Academia</h3>
-      <div class="flex items-center gap-2 mb-2"><span class="w-2.5 h-2.5 rounded-full bg-[#166534]"></span>
+  <div class="space-y-5">
+    <div class="acr-in bg-white border border-[#E5E7EB] rounded-2xl p-6" style="animation-delay:.49s">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style="background:#EEF4FB">
+          <span class="material-symbols-outlined text-secondary text-[18px]">sync</span></span>
+        <h3 class="font-bold">Sincronización Academia</h3>
+      </div>
+      <div class="flex items-center gap-2 mb-2"><span class="w-2.5 h-2.5 rounded-full bg-[#166534] acr-pulse"></span>
         <span class="text-body-sm font-semibold text-[#166534]">Conectada · hoy 09:00 AM</span></div>
-      <p class="text-body-sm text-[#44474e] mb-4">247 registros actualizados en la última sincronización automática.</p>
+      <p class="text-body-sm text-[#5A6472] mb-4">247 registros actualizados en la última sincronización automática.</p>
       <a class="text-body-sm font-semibold text-secondary hover:underline" href="sincronizacion.html">Ver log de ingesta</a>
     </div>
-    <div class="bg-white border border-[#E5E7EB] rounded-lg p-6">
-      <h3 class="font-bold mb-4">Próximo paso</h3>
-      <p class="text-body-sm text-[#44474e] mb-1"><span class="font-semibold text-[#191c1e]">Qué:</span> regularizar renovaciones de RCP/IAAS en UCI Cardiovascular.</p>
-      <p class="text-body-sm text-[#44474e] mb-1"><span class="font-semibold text-[#191c1e]">Quién:</span> jefatura del servicio, con apoyo del encargado.</p>
-      <p class="text-body-sm text-[#44474e] mb-4"><span class="font-semibold text-[#191c1e]">Cuándo:</span> antes del 15 de agosto (corte pre-acreditación).</p>
-      <a class="inline-block bg-secondary text-white font-semibold text-body-sm px-4 py-2.5 rounded hover:bg-[#2566BD]" href="punto.html?p=3.1" data-accion="1">Ir al punto crítico</a>
+    <div class="acr-in bg-white border border-[#E5E7EB] rounded-2xl p-6" style="animation-delay:.54s">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style="background:#F3E8F4">
+          <span class="material-symbols-outlined text-[18px]" style="color:#5B1763">flag</span></span>
+        <h3 class="font-bold">Próximo paso</h3>
+      </div>
+      <div class="space-y-2.5 mb-4">
+        <p class="text-body-sm text-[#5A6472]"><span class="font-semibold text-[#191c1e]">Qué:</span> regularizar renovaciones de RCP/IAAS en UCI Cardiovascular.</p>
+        <p class="text-body-sm text-[#5A6472]"><span class="font-semibold text-[#191c1e]">Quién:</span> jefatura del servicio, con apoyo del encargado.</p>
+        <p class="text-body-sm text-[#5A6472]"><span class="font-semibold text-[#191c1e]">Cuándo:</span> antes del 15 de agosto (corte pre-acreditación).</p>
+      </div>
+      <a class="inline-block bg-secondary text-white font-semibold text-body-sm px-4 py-2.5 rounded-full hover:bg-[#2566BD]" href="punto.html?p=3.1" data-accion="1">Ir al punto crítico</a>
     </div>
   </div>
-</div></main></div></div><script>
+</div>
+</main></div></div><script>
 (function(){
-  var MAPA={'3.1 RCP/IAAS':'3.1','4.3 Vacunaci\u00f3n':'4.3','2.1 Inducci\u00f3n':'2.1','2.2 Orientaci\u00f3n':'2.2'};
+  /* Anillos radiales SVG + conteo animado — efecto premium al cargar */
+  document.querySelectorAll('.ring-slot').forEach(function(el){
+    var pct=parseFloat(el.getAttribute('data-percent'))||0;
+    var color=el.getAttribute('data-color')||'#307FE2';
+    var size=parseInt(el.getAttribute('data-size'))||64;
+    var stroke=parseInt(el.getAttribute('data-stroke'))||6;
+    var r=(size-stroke)/2, c=2*Math.PI*r;
+    el.style.width=size+'px'; el.style.height=size+'px'; el.style.position='relative';
+    el.innerHTML='<svg width="'+size+'" height="'+size+'" style="transform:rotate(-90deg)">'+
+      '<circle cx="'+size/2+'" cy="'+size/2+'" r="'+r+'" fill="none" stroke="#EEF0F3" stroke-width="'+stroke+'"/>'+
+      '<circle cx="'+size/2+'" cy="'+size/2+'" r="'+r+'" fill="none" stroke="'+color+'" stroke-width="'+stroke+'" '+
+      'stroke-linecap="round" stroke-dasharray="'+c+'" stroke-dashoffset="'+c+'" style="transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1)"/>'+
+      '</svg>'+(size>=80?'<span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:'+Math.round(size*0.24)+'px;color:'+color+'">'+pct+'%</span>':'');
+    var ring=el.querySelector('circle:last-child');
+    requestAnimationFrame(function(){setTimeout(function(){ring.style.strokeDashoffset=c-(pct/100)*c;},120);});
+  });
+  /* Conteo animado en los chips de resumen */
+  document.querySelectorAll('.acr-count').forEach(function(el){
+    var target=parseInt(el.getAttribute('data-target'))||0, cur=0;
+    var step=Math.max(1,Math.round(target/24));
+    var iv=setInterval(function(){
+      cur=Math.min(target,cur+step); el.textContent=cur;
+      if(cur>=target){clearInterval(iv);}
+    },28);
+  });
+  /* Barras de cumplimiento de la tabla */
+  document.querySelectorAll('.acr-bar').forEach(function(b){
+    var w=b.getAttribute('data-width');
+    requestAnimationFrame(function(){setTimeout(function(){b.style.width=w+'%';},150);});
+  });
+})();
+</script><script>
+(function(){
+  var MAPA={'RCP/IAAS':'3.1','Vacunaci\u00f3n':'4.3','Inducci\u00f3n':'2.1','Orientaci\u00f3n':'2.2'};
   document.querySelectorAll('#tabla-servicios tr').forEach(function(tr){
     var celdas=tr.children;
     if(!celdas.length)return;
