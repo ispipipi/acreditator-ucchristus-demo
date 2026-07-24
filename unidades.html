@@ -186,25 +186,31 @@
   unidades.forEach(function (u) {
     var c = colores[u.estado];
     var card = document.createElement('div');
-    card.className = 'bg-white border border-[#ECE0EF] rounded-lg p-6';
+    card.className = 'acr-in bg-white border border-[#ECE0EF] rounded-2xl p-6';
     var filas = Object.keys(u.puntos).map(function (p) {
       var v = u.puntos[p];
       var col = v >= 85 ? '#166534' : (v >= 80 ? '#B45309' : '#B91C1C');
-      return '<div class="flex items-center justify-between text-body-sm py-1.5 border-t border-[#F3ECF4]">' +
-        '<span class="text-[#5A5568]">Punto ' + p + '</span>' +
-        '<span class="font-bold" style="color:' + col + '">' + v + '%</span></div>';
+      return '<div class="py-1.5 border-t border-[#F3ECF4]">' +
+        '<div class="flex items-center justify-between text-body-sm mb-1">' +
+        '<span class="text-[#5A5568]">' + NOMBRES[p] + '</span>' +
+        '<span class="font-bold" style="color:' + col + '">' + v + '%</span></div>' +
+        '<div class="w-full h-1 bg-[#F3ECF4] rounded-full overflow-hidden">' +
+        '<div class="acr-bar h-full rounded-full" data-width="' + v + '" style="background:' + col + '"></div></div></div>';
     }).join('');
     card.innerHTML =
-      '<div class="flex items-start justify-between mb-3">' +
-      '<div><h3 class="font-bold text-[#191c1e]">' + u.nombre + '</h3>' +
-      '<p class="text-body-sm text-[#5A5568]">' + u.dot + ' funcionarios acreditables</p></div>' +
-      '<span class="text-[11px] font-bold px-2 py-1 rounded-full" style="color:' + c[0] + ';background:' + c[1] + '">' + c[2] + '</span></div>' +
-      '<div class="flex items-end gap-2 mb-3"><span class="text-[34px] leading-none font-extrabold" style="color:' + c[0] + '">' + u.global + '%</span>' +
-      '<span class="text-body-sm text-[#5A5568] pb-1">global · meta 85%</span></div>' + filas +
+      '<div class="flex items-start gap-4 mb-3">' +
+      '<div class="ring-slot shrink-0" data-percent="' + u.global + '" data-color="' + c[0] + '" data-size="64" data-stroke="6"></div>' +
+      '<div class="flex-1 min-w-0">' +
+      '<div class="flex items-start justify-between gap-2">' +
+      '<h3 class="font-bold text-[#191c1e]">' + u.nombre + '</h3>' +
+      '<span class="text-[11px] font-bold px-2 py-1 rounded-full shrink-0" style="color:' + c[0] + ';background:' + c[1] + '">' + c[2] + '</span></div>' +
+      '<p class="text-body-sm text-[#5A5568]">' + u.dot + ' funcionarios · meta 85%</p></div></div>' +
+      filas +
       '<div class="mt-4 flex items-center justify-between">' +
       '<button class="text-body-sm font-semibold text-secondary hover:underline" data-toast="Umbral de ' + u.nombre + ' configurable en versión productiva" data-accion="1">Configurar umbrales</button>' +
       '<a class="text-body-sm font-semibold text-secondary hover:underline" href="panel.html">Ver panel</a></div>';
     grid.appendChild(card);
   });
+  if (window.AcreditatorDemo && window.AcreditatorDemo.initGraficos) { window.AcreditatorDemo.initGraficos(); }
 })();
 </script></body></html>

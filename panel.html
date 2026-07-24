@@ -343,39 +343,6 @@
 </div>
 </main></div></div><script>
 (function(){
-  /* Anillos radiales SVG + conteo animado — efecto premium al cargar */
-  document.querySelectorAll('.ring-slot').forEach(function(el){
-    var pct=parseFloat(el.getAttribute('data-percent'))||0;
-    var color=el.getAttribute('data-color')||'#307FE2';
-    var size=parseInt(el.getAttribute('data-size'))||64;
-    var stroke=parseInt(el.getAttribute('data-stroke'))||6;
-    var r=(size-stroke)/2, c=2*Math.PI*r;
-    el.style.width=size+'px'; el.style.height=size+'px'; el.style.position='relative';
-    el.innerHTML='<svg width="'+size+'" height="'+size+'" style="transform:rotate(-90deg)">'+
-      '<circle cx="'+size/2+'" cy="'+size/2+'" r="'+r+'" fill="none" stroke="#EEF0F3" stroke-width="'+stroke+'"/>'+
-      '<circle cx="'+size/2+'" cy="'+size/2+'" r="'+r+'" fill="none" stroke="'+color+'" stroke-width="'+stroke+'" '+
-      'stroke-linecap="round" stroke-dasharray="'+c+'" stroke-dashoffset="'+c+'" style="transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1)"/>'+
-      '</svg>'+(size>=80?'<span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:'+Math.round(size*0.24)+'px;color:'+color+'">'+pct+'%</span>':'');
-    var ring=el.querySelector('circle:last-child');
-    requestAnimationFrame(function(){setTimeout(function(){ring.style.strokeDashoffset=c-(pct/100)*c;},120);});
-  });
-  /* Conteo animado en los chips de resumen */
-  document.querySelectorAll('.acr-count').forEach(function(el){
-    var target=parseInt(el.getAttribute('data-target'))||0, cur=0;
-    var step=Math.max(1,Math.round(target/24));
-    var iv=setInterval(function(){
-      cur=Math.min(target,cur+step); el.textContent=cur;
-      if(cur>=target){clearInterval(iv);}
-    },28);
-  });
-  /* Barras de cumplimiento de la tabla */
-  document.querySelectorAll('.acr-bar').forEach(function(b){
-    var w=b.getAttribute('data-width');
-    requestAnimationFrame(function(){setTimeout(function(){b.style.width=w+'%';},150);});
-  });
-})();
-</script><script>
-(function(){
   var MAPA={'RCP/IAAS':'3.1','Vacunaci\u00f3n':'4.3','Inducci\u00f3n':'2.1','Orientaci\u00f3n':'2.2'};
   document.querySelectorAll('#tabla-servicios tr').forEach(function(tr){
     var celdas=tr.children;
