@@ -199,6 +199,8 @@
 <h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">RCP / IAAS</h2>
 </div>
 </div>
+<div class="flex items-center gap-8">
+<div class="ring-slot shrink-0" data-percent="78" data-color="#B91C1C" data-size="84" data-stroke="7" id="ring-punto"></div>
 <div class="flex items-center gap-12">
 <div>
 <p class="text-[10px] font-bold text-on-surface-variant/70 mb-2 uppercase tracking-widest">Cumplimiento Actual</p>
@@ -213,6 +215,7 @@
 <div>
 <p class="text-[10px] font-bold text-on-surface-variant/70 mb-2 uppercase tracking-widest">Meta Institucional</p>
 <span class="font-bold text-5xl text-secondary/40">85%</span>
+</div>
 </div>
 </div>
 </div>
@@ -431,9 +434,9 @@
 <p class="text-[9px] font-bold text-on-surface-variant/70 uppercase tracking-widest">Dotación Total</p>
 <span class="material-symbols-outlined text-primary/30 text-lg group-hover:text-primary transition-colors">groups</span>
 </div>
-<h3 class="text-3xl font-bold text-primary mb-3 tracking-tight">128</h3>
+<h3 class="text-3xl font-bold text-primary mb-3 tracking-tight"><span class="acr-count" data-target="128">0</span></h3>
 <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-<div class="h-full bg-primary" style="width: 100%"></div>
+<div class="acr-bar h-full bg-primary" data-width="100"></div>
 </div>
 </div>
 <div class="bg-white p-6 border border-outline-variant/20 rounded-xl premium-shadow group hover:border-emerald-500/20 transition-all">
@@ -441,9 +444,9 @@
 <p class="text-[9px] font-bold text-on-surface-variant/70 uppercase tracking-widest">Vigentes</p>
 <span class="material-symbols-outlined text-emerald-500/30 text-lg group-hover:text-emerald-500 transition-colors">check_circle</span>
 </div>
-<h3 class="text-3xl font-bold text-emerald-700 mb-3 tracking-tight">100</h3>
+<h3 class="text-3xl font-bold text-emerald-700 mb-3 tracking-tight"><span class="acr-count" data-target="100">0</span></h3>
 <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-<div class="h-full bg-emerald-500" style="width: 78%"></div>
+<div class="acr-bar h-full bg-emerald-500" data-width="78"></div>
 </div>
 </div>
 <div class="bg-white p-6 border border-outline-variant/20 rounded-xl premium-shadow group hover:border-amber-500/20 transition-all">
@@ -451,9 +454,9 @@
 <p class="text-[9px] font-bold text-on-surface-variant/70 uppercase tracking-widest">Por vencer</p>
 <span class="material-symbols-outlined text-amber-500/30 text-lg group-hover:text-amber-500 transition-colors">error</span>
 </div>
-<h3 class="text-3xl font-bold text-amber-700 mb-3 tracking-tight">18</h3>
+<h3 class="text-3xl font-bold text-amber-700 mb-3 tracking-tight"><span class="acr-count" data-target="18">0</span></h3>
 <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-<div class="h-full bg-amber-500" style="width: 14%"></div>
+<div class="acr-bar h-full bg-amber-500" data-width="14"></div>
 </div>
 </div>
 <div class="bg-white p-6 border border-outline-variant/20 rounded-xl premium-shadow group hover:border-rose-500/20 transition-all">
@@ -461,9 +464,9 @@
 <p class="text-[9px] font-bold text-on-surface-variant/70 uppercase tracking-widest">Pendientes</p>
 <span class="material-symbols-outlined text-rose-500/30 text-lg group-hover:text-rose-500 transition-colors">cancel</span>
 </div>
-<h3 class="text-3xl font-bold text-rose-700 mb-3 tracking-tight">10</h3>
+<h3 class="text-3xl font-bold text-rose-700 mb-3 tracking-tight"><span class="acr-count" data-target="10">0</span></h3>
 <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-<div class="h-full bg-rose-500" style="width: 8%"></div>
+<div class="acr-bar h-full bg-rose-500" data-width="8"></div>
 </div>
 </div>
 </section>
@@ -501,10 +504,10 @@ function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.set
 
 (function(){
   var PUNTOS={
-    '2.1':{nombre:'Inducci\u00f3n Corporativa',actual:'91%',delta:'+1.2%',ok:true},
-    '2.2':{nombre:'Orientaci\u00f3n al Puesto',actual:'87%',delta:'+0.5%',ok:true},
-    '3.1':{nombre:'RCP / IAAS',actual:'78%',delta:'-2.4%',ok:false},
-    '4.3':{nombre:'Vacunaci\u00f3n Hepatitis B',actual:'82%',delta:'+0.8%',ok:false}
+    '2.1':{nombre:'Inducci\u00f3n Corporativa',actual:'91%',delta:'+1.2%',ok:true,pct:91,color:'#166534'},
+    '2.2':{nombre:'Orientaci\u00f3n al Puesto',actual:'87%',delta:'+0.5%',ok:true,pct:87,color:'#166534'},
+    '3.1':{nombre:'RCP / IAAS',actual:'78%',delta:'-2.4%',ok:false,pct:78,color:'#B91C1C'},
+    '4.3':{nombre:'Vacunaci\u00f3n Hepatitis B',actual:'82%',delta:'+0.8%',ok:false,pct:82,color:'#B45309'}
   };
   var sel=(new URLSearchParams(location.search)).get('p')||'3.1';
   if(!PUNTOS[sel]){sel='3.1';}
@@ -531,6 +534,13 @@ function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.set
     for(var j=0;j<nums.length;j++){
       if(nums[j].children.length===0&&/^78%$/.test(nums[j].textContent.trim())){nums[j].textContent=PUNTOS[sel].actual;}
       if(nums[j].children.length===0&&/^-2\.4%$/.test(nums[j].textContent.trim())){nums[j].textContent=PUNTOS[sel].delta;}
+    }
+    /* actualizar anillo radial — se ejecuta ANTES de que initGraficos() renderice el SVG
+       (ese corre en DOMContentLoaded), así que ajustamos los atributos data- de origen */
+    var ring=document.getElementById('ring-punto');
+    if(ring){
+      ring.setAttribute('data-percent',PUNTOS[sel].pct);
+      ring.setAttribute('data-color',PUNTOS[sel].color);
     }
   }
   toastify($btn('Enviar recordatorio'),'Recordatorio enviado a las jefaturas con pendientes de este punto');
