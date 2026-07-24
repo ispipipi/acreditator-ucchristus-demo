@@ -435,8 +435,8 @@
 </div>
 </div>
 <!-- Auxiliary Information -->
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
-<div class="lg:col-span-2 bg-white border border-outline-variant p-6 rounded-xl clinical-shadow">
+<div class="grid grid-cols-1 gap-gutter">
+<div class="bg-white border border-outline-variant p-6 rounded-xl clinical-shadow">
 <div class="flex items-center justify-between mb-5">
 <h4 class="font-bold text-primary-container flex items-center gap-2">
 <span class="material-symbols-outlined text-secondary" data-icon="database">database</span>
@@ -463,37 +463,22 @@
 </div>
 <span class="text-green-600 font-bold text-[10px] uppercase bg-green-50 px-2 py-1 rounded">Activo</span>
 </div>
-<div class="flex items-center justify-between p-4 bg-slate-50 border border-slate-100 rounded-lg hover:border-tertiary/30 transition-all">
+<div id="fila-honorarios" class="flex items-center justify-between p-4 bg-slate-50 border-2 border-dashed border-slate-200 rounded-lg hover:border-secondary/40 transition-all cursor-pointer" title="Arrastra el archivo de honorarios aquí o haz clic para simular la carga">
 <div class="flex items-center gap-4">
 <div class="p-2.5 bg-slate-300 text-slate-700 rounded-lg shadow-sm">
 <span class="material-symbols-outlined text-[20px]" data-icon="upload_file">upload_file</span>
 </div>
 <div>
 <p class="font-bold text-primary-container text-sm">Archivo Honorarios (.xlsx)</p>
-<p class="text-[11px] text-on-surface-variant flex items-center gap-1">
+<p id="estado-honorarios-texto" class="text-[11px] text-on-surface-variant flex items-center gap-1">
 <span class="w-2 h-2 rounded-full bg-amber-500"></span>
                                         Pendiente de carga • Ayer, 18:15 PM
                                     </p>
 </div>
 </div>
-<span class="text-amber-600 font-bold text-[10px] uppercase bg-amber-50 px-2 py-1 rounded">Desactualizado</span>
+<span id="estado-honorarios-badge" class="text-amber-600 font-bold text-[10px] uppercase bg-amber-50 px-2 py-1 rounded">Desactualizado</span>
 </div>
 </div>
-</div>
-<div class="bg-primary-container text-white p-6 rounded-xl flex flex-col justify-between border border-primary-container clinical-shadow relative overflow-hidden group">
-<div class="absolute -right-4 -top-4 w-32 h-32 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-all"></div>
-<div class="relative">
-<h4 class="font-bold text-secondary-fixed text-lg mb-3">Asistente de Gestión</h4>
-<p class="text-sm font-light leading-relaxed text-slate-300">
-                            La consolidación de dotación es fundamental para la acreditación. Verifique que las fechas de egreso coincidan con los registros de la superintendencia para evitar observaciones.
-                        </p>
-</div>
-<a class="mt-8 flex items-center justify-between group/link relative" href="#">
-<span class="text-[11px] font-bold uppercase tracking-widest text-secondary-container">Consultar Protocolos</span>
-<div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover/link:bg-white/20 transition-all">
-<span class="material-symbols-outlined text-[18px] transition-transform group-hover/link:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
-</div>
-</a>
 </div>
 </div>
 </div>
@@ -520,16 +505,73 @@
 
 function $btn(txt){var els=document.querySelectorAll('button,a');for(var i=0;i<els.length;i++){if(els[i].textContent.replace(/\s+/g,' ').trim().indexOf(txt)>=0)return els[i];}return null;}
 function $btnAll(txt){var out=[],els=document.querySelectorAll('button,a');for(var i=0;i<els.length;i++){if(els[i].textContent.replace(/\s+/g,' ').trim().indexOf(txt)>=0)out.push(els[i]);}return out;}
-function hideCard(txt){var els=document.querySelectorAll('h3,h4,h5');for(var i=0;i<els.length;i++){if(els[i].textContent.indexOf(txt)>=0){var c=els[i].closest('div.bg-white,div.relative,div[class*="rounded"]');if(c){c.style.display='none';}return;}}}
+
 function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.setAttribute('data-accion','1');if(el.tagName==='A'){el.setAttribute('href','#');}}
 
 (function(){
   var imp=$btn('Importar N\u00f3mina');
   if(imp){imp.addEventListener('click',function(e){e.preventDefault();location.href='importar.html';});}
   toastify($btn('Resolver inconsistencias'),'12 conflictos de RUT listados para revisi\u00f3n del encargado');
-  toastify($btn('SINCRONIZAR AHORA'),'Sincronizaci\u00f3n manual ejecutada \u00b7 dotaci\u00f3n actualizada');
   toastify($btn('Exportar'),'Dotaci\u00f3n exportada a Excel (simulado)');
-  hideCard('Asistente de Gesti\u00f3n');
+
+  /* Sincronizar Ahora — animada (spinner + check), consistente con el m\u00f3dulo Sincronizaci\u00f3n.
+     Nota: el texto real del bot\u00f3n es "Sincronizar Ahora" (may\u00fasculas solo por CSS), por eso
+     el toastify anterior con 'SINCRONIZAR AHORA' nunca hac\u00eda match. */
+  var syncBtn=$btn('Sincronizar Ahora');
+  if(syncBtn){
+    var syncOriginal=syncBtn.innerHTML;
+    syncBtn.addEventListener('click',function(e){
+      e.preventDefault();
+      if(syncBtn.hasAttribute('disabled'))return;
+      syncBtn.setAttribute('disabled','disabled');syncBtn.classList.add('opacity-70');
+      syncBtn.innerHTML='<span class="material-symbols-outlined acr-spin" style="font-size:16px;vertical-align:-3px;margin-right:4px">progress_activity</span>Sincronizando\u2026';
+      setTimeout(function(){
+        syncBtn.removeAttribute('disabled');syncBtn.classList.remove('opacity-70');
+        syncBtn.innerHTML='<span class="material-symbols-outlined acr-check-pop" style="font-size:16px;vertical-align:-3px;margin-right:4px;color:#166534">check_circle</span>Sincronizado';
+        if(window.AcreditatorDemo){AcreditatorDemo.toast('Sincronizaci\u00f3n manual ejecutada \u00b7 dotaci\u00f3n actualizada');}
+        setTimeout(function(){syncBtn.innerHTML=syncOriginal;},1800);
+      },1300);
+    });
+  }
+
+  /* Honorarios — simulaci\u00f3n de arrastrar y soltar el archivo (o clic como alternativa) */
+  var filaHon=document.getElementById('fila-honorarios');
+  if(filaHon){
+    var cargado=false;
+    function completarCargaHonorarios(){
+      if(cargado)return;
+      if(window.AcreditatorDemo&&AcreditatorDemo.rol==='auditor')return;
+      cargado=true;
+      filaHon.classList.remove('border-dashed','border-slate-200','border-2','ring-2','ring-secondary','bg-blue-50');
+      filaHon.classList.add('border','border-slate-100');
+      filaHon.style.cursor='default';
+      filaHon.removeAttribute('title');
+      var iconoWrap=filaHon.querySelector('[data-icon="upload_file"]');
+      if(iconoWrap){var box=iconoWrap.closest('div');box.classList.remove('bg-slate-300','text-slate-700');box.classList.add('bg-green-100','text-green-700');iconoWrap.textContent='task_alt';}
+      var texto=document.getElementById('estado-honorarios-texto');
+      if(texto){texto.innerHTML='<span class="w-2 h-2 rounded-full bg-green-500"></span>Cargado y validado \u00b7 hace instantes';}
+      var badge=document.getElementById('estado-honorarios-badge');
+      if(badge){badge.textContent='Activo';badge.className='text-green-600 font-bold text-[10px] uppercase bg-green-50 px-2 py-1 rounded acr-check-pop';}
+      if(window.AcreditatorDemo){AcreditatorDemo.toast('nomina_honorarios_julio.xlsx cargado \u00b7 fuente actualizada a Activo');}
+    }
+    filaHon.addEventListener('dragover',function(e){
+      e.preventDefault();
+      if(cargado)return;
+      filaHon.classList.add('ring-2','ring-secondary','bg-blue-50');
+    });
+    filaHon.addEventListener('dragleave',function(){
+      filaHon.classList.remove('ring-2','ring-secondary','bg-blue-50');
+    });
+    filaHon.addEventListener('drop',function(e){
+      e.preventDefault();
+      filaHon.classList.remove('ring-2','ring-secondary','bg-blue-50');
+      completarCargaHonorarios();
+    });
+    filaHon.addEventListener('click',function(){
+      if(window.AcreditatorDemo&&AcreditatorDemo.rol==='auditor')return;
+      completarCargaHonorarios();
+    });
+  }
   /* filas → ficha */
   document.querySelectorAll('tbody tr').forEach(function(tr){
     tr.style.cursor='pointer';
