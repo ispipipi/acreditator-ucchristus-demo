@@ -91,6 +91,37 @@
         el.classList.add('opacity-40', 'pointer-events-none');
       });
     }
+    /* Volver: disponible en toda pantalla que no sea el home del rol (panel/jefatura).
+       ficha.html y presentacion.html ya traen su propio control de retorno. */
+    var BACK_FALLBACK = {
+      'punto.html': 'panel.html',
+      'dotacion.html': 'panel.html',
+      'importar.html': 'dotacion.html',
+      'sincronizacion.html': 'panel.html',
+      'alertas.html': 'panel.html',
+      'reportes.html': 'panel.html',
+      'unidades.html': 'panel.html',
+      'manual.html': 'panel.html'
+    };
+    if (BACK_FALLBACK[page]) {
+      var main = document.querySelector('main');
+      if (main) {
+        var fallback = BACK_FALLBACK[page];
+        var back = document.createElement('a');
+        back.href = fallback;
+        back.className = 'acr-back-link inline-flex items-center gap-1 text-body-sm font-semibold text-secondary hover:underline mb-4';
+        back.innerHTML = '<span class="material-symbols-outlined text-[18px]">arrow_back</span>Volver';
+        back.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (document.referrer && document.referrer.indexOf(location.host) >= 0 && history.length > 1) {
+            history.back();
+          } else {
+            location.href = fallback;
+          }
+        });
+        main.insertBefore(back, main.firstChild);
+      }
+    }
   }
 
 
