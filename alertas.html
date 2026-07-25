@@ -250,6 +250,7 @@
 <th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant uppercase tracking-wider">Resumen Alerta</th>
 <th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant uppercase tracking-wider">Punto</th>
 <th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant uppercase tracking-wider">Estado</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant border-b border-outline-variant uppercase tracking-wider text-right">Acción</th>
 </tr>
 </thead>
 <tbody class="divide-y divide-outline-variant">
@@ -264,6 +265,7 @@
 <td class="px-6 py-4 font-body-md text-on-surface">Cumplimiento higiene de manos &lt; 85%</td>
 <td class="px-6 py-4"><span class="px-2 py-1 bg-surface-container rounded text-[11px] font-mono-sm text-on-surface-variant">IAAS-004</span></td>
 <td class="px-6 py-4"><span class="bg-red-50 text-red-700 border border-red-100 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight">Crítico</span></td>
+<td class="px-6 py-4 text-right"><a class="inline-flex items-center gap-1 text-[12px] font-bold text-secondary hover:underline" href="punto.html?p=3.1">Ver en Puntos <span class="material-symbols-outlined text-[14px]">arrow_forward</span></a></td>
 </tr>
 <tr class="hover:bg-primary/5 transition-colors group">
 <td class="px-6 py-4 font-mono-sm text-mono-sm text-on-surface-variant">2023-10-27 08:45</td>
@@ -276,6 +278,7 @@
 <td class="px-6 py-4 font-body-md text-on-surface">Vencimiento dotación mínima turno B</td>
 <td class="px-6 py-4"><span class="px-2 py-1 bg-surface-container rounded text-[11px] font-mono-sm text-on-surface-variant">DOT-012</span></td>
 <td class="px-6 py-4"><span class="bg-orange-50 text-orange-700 border border-orange-100 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight">Advertencia</span></td>
+<td class="px-6 py-4 text-right"><a class="inline-flex items-center gap-1 text-[12px] font-bold text-secondary hover:underline" href="dotacion.html">Ver en Dotación <span class="material-symbols-outlined text-[14px]">arrow_forward</span></a></td>
 </tr>
 <tr class="hover:bg-primary/5 transition-colors group">
 <td class="px-6 py-4 font-mono-sm text-mono-sm text-on-surface-variant">2023-10-26 17:20</td>
@@ -288,6 +291,7 @@
 <td class="px-6 py-4 font-body-md text-on-surface">Punto de control 18.2 sin sincronización</td>
 <td class="px-6 py-4"><span class="px-2 py-1 bg-surface-container rounded text-[11px] font-mono-sm text-on-surface-variant">SYNC-ERROR</span></td>
 <td class="px-6 py-4"><span class="bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight">Info</span></td>
+<td class="px-6 py-4 text-right"><a class="inline-flex items-center gap-1 text-[12px] font-bold text-secondary hover:underline" href="sincronizacion.html">Ver en Sincronización <span class="material-symbols-outlined text-[14px]">arrow_forward</span></a></td>
 </tr>
 <tr class="hover:bg-primary/5 transition-colors group">
 <td class="px-6 py-4 font-mono-sm text-mono-sm text-on-surface-variant">2023-10-26 14:05</td>
@@ -300,6 +304,7 @@
 <td class="px-6 py-4 font-body-md text-on-surface">Documentación vencida en Registro Clínico</td>
 <td class="px-6 py-4"><span class="px-2 py-1 bg-surface-container rounded text-[11px] font-mono-sm text-on-surface-variant">REG-CL-01</span></td>
 <td class="px-6 py-4"><span class="bg-red-50 text-red-700 border border-red-100 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight">Crítico</span></td>
+<td class="px-6 py-4 text-right"><a class="inline-flex items-center gap-1 text-[12px] font-bold text-secondary hover:underline" href="punto.html?p=2.1">Ver en Puntos <span class="material-symbols-outlined text-[14px]">arrow_forward</span></a></td>
 </tr>
 <tr class="hover:bg-primary/5 transition-colors group">
 <td class="px-6 py-4 font-mono-sm text-mono-sm text-on-surface-variant">2023-10-26 11:30</td>
@@ -312,6 +317,7 @@
 <td class="px-6 py-4 font-body-md text-on-surface">Meta semanal alcanzada: UMAE-P</td>
 <td class="px-6 py-4"><span class="px-2 py-1 bg-surface-container rounded text-[11px] font-mono-sm text-on-surface-variant">CAL-META</span></td>
 <td class="px-6 py-4"><span class="bg-green-50 text-green-700 border border-green-100 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight">Éxito</span></td>
+<td class="px-6 py-4 text-right"><a class="inline-flex items-center gap-1 text-[12px] font-bold text-secondary hover:underline" href="reportes.html">Ver en Reportes <span class="material-symbols-outlined text-[14px]">arrow_forward</span></a></td>
 </tr>
 </tbody>
 </table>
@@ -467,7 +473,7 @@
 <footer class="mt-12 py-8 px-margin-page border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant text-body-sm">
 <div class="flex items-center gap-2">
 <img alt="Logo" class="h-6 opacity-60" src="assets/logo-ucchristus-color.png"/>
-<span>© 2023 Red de Salud UC CHRISTUS. Todos los derechos reservados.</span>
+<span>© 2026 Red de Salud UC CHRISTUS. Todos los derechos reservados.</span>
 </div>
 <div class="flex gap-6">
 <a class="hover:text-primary transition-colors" href="#" data-toast="Mesa de soporte — disponible en la versión productiva">Soporte Técnico</a>
@@ -506,19 +512,9 @@
     </script>
 <script>
 (function(){
-  var MAPA=[['IAAS','punto.html?p=3.1'],['DOT','dotacion.html'],['SYNC','sincronizacion.html'],
-            ['REG','punto.html?p=2.1'],['CAL','reportes.html']];
-  document.querySelectorAll('table tbody tr').forEach(function(tr){
-    if(!tr.children.length)return;
-    var txt=tr.textContent;
-    var destino='panel.html';
-    for(var i=0;i<MAPA.length;i++){if(txt.indexOf(MAPA[i][0])>=0){destino=MAPA[i][1];break;}}
-    tr.style.cursor='pointer';
-    tr.addEventListener('click',function(ev){
-      if(ev.target.closest('button,a'))return;
-      location.href=destino;
-    });
-  });
+  /* El destino ya es explícito con el enlace "Ver en [Módulo]" al final de cada fila
+     (columna Acción) — se retiró el clic silencioso sobre toda la fila para que la
+     navegación nunca sea una sorpresa. */
 })();
 </script>
 <script src="js/app.js"></script><script>
