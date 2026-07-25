@@ -259,7 +259,7 @@
 <div class="text-body-sm font-medium text-slate-600">+2 años</div>
 </td>
 <td class="px-4 py-5 text-center">
-<button class="text-secondary hover:scale-110 transition-transform p-2 rounded-full hover:bg-blue-50">
+<button data-cert-curso="RCP Avanzado (BLS/ACLS)" data-cert-fecha="15 marzo 2023" data-cert-vigencia="Vigente · 2 años" data-cert-id="UC-RCP-88219" class="btn-ver-evidencia text-secondary hover:scale-110 transition-transform p-2 rounded-full hover:bg-blue-50">
 <span class="material-symbols-outlined">description</span>
 </button>
 </td>
@@ -279,7 +279,7 @@
 <div class="text-body-sm font-medium text-slate-600">+5 años</div>
 </td>
 <td class="px-4 py-5 text-center">
-<button class="text-secondary hover:scale-110 transition-transform p-2 rounded-full hover:bg-blue-50">
+<button data-cert-curso="Prevención de IAAS" data-cert-fecha="10 enero 2024" data-cert-vigencia="Vigente · 5 años" data-cert-id="UC-IAAS-45210" class="btn-ver-evidencia text-secondary hover:scale-110 transition-transform p-2 rounded-full hover:bg-blue-50">
 <span class="material-symbols-outlined">description</span>
 </button>
 </td>
@@ -474,5 +474,25 @@ function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.set
     var back=document.querySelector('.acr-back-link');
     if(back&&back.parentNode){back.parentNode.insertBefore(aviso,back.nextSibling);}
   }
+
+  /* Evidencia — abre un certificado real con los datos de la persona y el curso */
+  document.querySelectorAll('.btn-ver-evidencia').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      var nombreActual=document.getElementById('ficha-nombre');
+      var rutActual=document.getElementById('ficha-rut');
+      var servicioActual=document.getElementById('ficha-servicio');
+      var params=new URLSearchParams({
+        nombre: nombreActual?nombreActual.textContent.trim():'Ana Morales',
+        rut: rutActual?rutActual.textContent.trim():'12.345.678-9',
+        curso: btn.getAttribute('data-cert-curso'),
+        fecha: btn.getAttribute('data-cert-fecha'),
+        vigencia: btn.getAttribute('data-cert-vigencia'),
+        servicio: servicioActual?servicioActual.textContent.replace('Servicio: ','').trim():'Urgencia Adulto',
+        id: btn.getAttribute('data-cert-id')
+      });
+      window.open('certificado.html?'+params.toString(),'_blank');
+    });
+  });
 })();
 </script></body></html>
