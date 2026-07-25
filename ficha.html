@@ -194,21 +194,21 @@
 </div>
 <div class="text-center md:text-left flex-grow">
 <div class="flex flex-col md:flex-row md:items-center gap-2 mb-2">
-<h2 class="font-headline-lg text-3xl text-[#5B1763]">Carlos Sepúlveda</h2>
-<span class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[12px] font-bold">Vigencia: Activa</span>
+<h2 id="ficha-nombre" class="font-headline-lg text-3xl text-[#5B1763]">Carlos Sepúlveda</h2>
+<span id="ficha-estado-badge" class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[12px] font-bold">Vigencia: Activa</span>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-on-surface-variant">
 <div class="flex flex-col">
 <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400 mb-1">Identificación</span>
-<span class="flex items-center text-body-md font-medium"><span class="material-symbols-outlined text-[18px] mr-2 text-secondary">badge</span> RUT <span class="font-mono-sm text-mono-sm ml-1">12.345.678-9</span></span>
+<span class="flex items-center text-body-md font-medium"><span class="material-symbols-outlined text-[18px] mr-2 text-secondary">badge</span> RUT <span id="ficha-rut" class="font-mono-sm text-mono-sm ml-1">12.345.678-9</span></span>
 </div>
 <div class="flex flex-col">
 <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400 mb-1">Cargo Institucional</span>
-<span class="flex items-center text-body-md font-medium"><span class="material-symbols-outlined text-[18px] mr-2 text-secondary">medical_services</span> Enfermero Clínico</span>
+<span class="flex items-center text-body-md font-medium"><span class="material-symbols-outlined text-[18px] mr-2 text-secondary">medical_services</span> <span id="ficha-cargo">Enfermero Clínico</span></span>
 </div>
 <div class="flex flex-col">
 <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400 mb-1">Centro de Costo</span>
-<span class="flex items-center text-body-md font-medium"><span class="material-symbols-outlined text-[18px] mr-2 text-secondary">emergency</span> Servicio: Urgencia</span>
+<span class="flex items-center text-body-md font-medium"><span class="material-symbols-outlined text-[18px] mr-2 text-secondary">emergency</span> <span id="ficha-servicio">Servicio: Urgencia</span></span>
 </div>
 </div>
 </div>
@@ -438,5 +438,41 @@ function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.set
       el.style.padding='2px 8px';el.style.borderRadius='999px';
     }
   });
+})();
+</script><script>
+(function(){
+  /* Poblar la ficha con los datos de la persona clickeada, si vienen por URL.
+     Si se entra directo (sin parámetros), se conserva el ejemplo por defecto. */
+  var qp=new URLSearchParams(location.search);
+  var nombre=qp.get('nombre'), rut=qp.get('rut'), estado=qp.get('estado'),
+      servicio=qp.get('servicio'), punto=qp.get('punto'), cargo=qp.get('cargo');
+  if(!nombre)return;
+  var elNombre=document.getElementById('ficha-nombre');
+  if(elNombre)elNombre.textContent=nombre;
+  var elRut=document.getElementById('ficha-rut');
+  if(elRut&&rut)elRut.textContent=rut;
+  var elCargo=document.getElementById('ficha-cargo');
+  if(elCargo&&cargo)elCargo.textContent=cargo;
+  var elServicio=document.getElementById('ficha-servicio');
+  if(elServicio&&servicio)elServicio.textContent='Servicio: '+servicio;
+  var elBadge=document.getElementById('ficha-estado-badge');
+  if(elBadge&&estado){
+    var mapaEstado={
+      'Vigente':{texto:'Vigencia: Activa',cls:'inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[12px] font-bold'},
+      'Por vencer':{texto:'Vigencia: Por vencer',cls:'inline-flex items-center px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-[12px] font-bold'},
+      'Pendiente':{texto:'Vigencia: Pendiente',cls:'inline-flex items-center px-3 py-1 rounded-full bg-red-50 text-red-700 text-[12px] font-bold'}
+    };
+    var e=mapaEstado[estado]||{texto:'Vigencia: '+estado,cls:elBadge.className};
+    elBadge.textContent=e.texto; elBadge.className=e.cls;
+  }
+  /* aviso de contexto: desde qué punto se llegó a esta ficha */
+  if(punto){
+    var main=document.querySelector('main');
+    var aviso=document.createElement('p');
+    aviso.className='text-body-sm text-[#8D8398] mb-4';
+    aviso.textContent='Viendo esta ficha en el contexto de: '+punto;
+    var back=document.querySelector('.acr-back-link');
+    if(back&&back.parentNode){back.parentNode.insertBefore(aviso,back.nextSibling);}
+  }
 })();
 </script></body></html>

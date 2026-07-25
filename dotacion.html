@@ -572,12 +572,20 @@ function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.set
       completarCargaHonorarios();
     });
   }
-  /* filas → ficha */
-  document.querySelectorAll('tbody tr').forEach(function(tr){
+  /* filas → ficha, pasando los datos reales de la persona clickeada */
+  document.querySelectorAll('#colaboradores-tbody tr, table tbody tr').forEach(function(tr){
+    var celdas=tr.children;
+    if(celdas.length<6)return;
     tr.style.cursor='pointer';
     tr.addEventListener('click',function(ev){
       if(ev.target.closest('button,a'))return;
-      location.href='ficha.html';
+      var rut=celdas[0]?celdas[0].textContent.trim():'';
+      var nombre=celdas[1]?celdas[1].textContent.trim():'';
+      var cargo=celdas[2]?celdas[2].textContent.trim():'';
+      var servicio=celdas[3]?celdas[3].textContent.trim():'';
+      var estado=celdas[5]?celdas[5].textContent.trim():'';
+      var params=new URLSearchParams({nombre:nombre,rut:rut,cargo:cargo,estado:estado,servicio:servicio});
+      location.href='ficha.html?'+params.toString();
     });
   });
 })();
