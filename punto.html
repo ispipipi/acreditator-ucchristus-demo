@@ -516,7 +516,7 @@ function toastify(el,msg){if(!el)return;el.setAttribute('data-toast',msg);el.set
   for(var i=0;i<h1s.length;i++){if(h1s[i].textContent.indexOf('RCP')>=0){titulo=h1s[i];break;}}
   if(titulo){
     titulo.textContent=PUNTOS[sel].nombre;
-    var card=titulo.closest('div.bg-white,div[class*="rounded"]');
+    var card=titulo.closest('.bg-white,[class*="rounded"]');
     var tabs=document.createElement('div');
     tabs.className='flex flex-wrap gap-2 mb-4';
     Object.keys(PUNTOS).forEach(function(k){
